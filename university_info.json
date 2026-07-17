@@ -1,0 +1,550 @@
+{
+  "university_name": "Parul University",
+  "contact": {
+    "email": "admissions@paruluniversity.ac.in",
+    "phone": "+91-9316751818",
+    "address": "P.O. Limda, Tal. Waghodia, Vadodara, Gujarat 391760",
+    "office_hours": "Monday to Saturday, 9:00 AM - 5:00 PM IST",
+    "website": "https://www.paruluniversity.ac.in"
+  },
+  "admissions": {
+    "undergraduate": {
+      "eligibility": "Pass in Class 10+2 (Higher Secondary) with a minimum of 45% aggregate marks (40% for reserved categories). Specific entrance exams required: B.Tech (JEE Main/GUJCET), B.Arch (NATA/JEE), B.Des (PU-DAT).",
+      "deadline": "July 31, 2026",
+      "requirements": [
+        "Online registration on admission portal",
+        "Class 10 and 12 mark sheets and certificates",
+        "National/State entrance scorecard (JEE/GUJCET/NATA)",
+        "Transfer Certificate (TC) & Migration Certificate",
+        "Valid Government ID (Aadhar Card)",
+        "Passport-size photographs"
+      ],
+      "process": "1. Register on the Parul University admissions portal. 2. Fill in personal, contact, and academic details. 3. Upload scanned copies of required mark sheets and IDs. 4. Pay the application fee (INR 2,000) online. 5. Document verification by admissions office. 6. Receive provisional admission letter and pay tuition fees."
+    },
+    "postgraduate": {
+      "eligibility": "Bachelor's degree in a relevant discipline from a recognized university with at least 50% aggregate marks (45% for reserved categories).",
+      "deadline": "August 15, 2026",
+      "requirements": [
+        "Online admission application form",
+        "Class 10, 12, and Graduation degree certificates/mark sheets",
+        "Postgraduate entrance scorecard (CAT/MAT/CMAT/PGCET if applicable)",
+        "Updated Resume/CV",
+        "Migration and Transfer Certificates"
+      ],
+      "process": "1. Submit application online at the official portal. 2. Provide undergraduate academic credentials and entrance exam scores. 3. Participate in counseling/personal interview rounds (for MBA and specialized PG programs). 4. Upon selection, pay course fees to secure admission."
+    },
+    "scholarships": {
+      "merit_based": "Up to 50% tuition waiver for outstanding academic achievements in board examinations or national level entrance tests.",
+      "need_based": "Financial assistance, sports quota exemptions, and sibling/defense personal fee waivers available upon application verification.",
+      "deadline": "June 30, 2026"
+    }
+  },
+  "fees": {
+    "courses": [
+      {
+        "course_name": "B.Tech Computer Science & Engineering",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,75,000"
+      },
+      {
+        "course_name": "B.Tech Information Technology",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,25,000"
+      },
+      {
+        "course_name": "B.Tech Mechanical Engineering",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,15,000"
+      },
+      {
+        "course_name": "B.Tech Civil Engineering",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,15,000"
+      },
+      {
+        "course_name": "BCA (Bachelor of Computer Applications)",
+        "level": "Undergraduate",
+        "duration": "3 Years",
+        "tuition_fee_per_year": "₹96,000"
+      },
+      {
+        "course_name": "MCA (Master of Computer Applications)",
+        "level": "Postgraduate",
+        "duration": "2 Years",
+        "tuition_fee_per_year": "₹1,10,000"
+      },
+      {
+        "course_name": "B.Sc Data Science & AI",
+        "level": "Undergraduate",
+        "duration": "3 Years",
+        "tuition_fee_per_year": "₹1,20,000"
+      },
+      {
+        "course_name": "Bachelor of Business Administration (BBA)",
+        "level": "Undergraduate",
+        "duration": "3 Years",
+        "tuition_fee_per_year": "₹90,000"
+      },
+      {
+        "course_name": "MBA (Master of Business Administration)",
+        "level": "Postgraduate",
+        "duration": "2 Years",
+        "tuition_fee_per_year": "₹1,92,000"
+      },
+      {
+        "course_name": "B.Pharmacy (Bachelor of Pharmacy)",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,10,000"
+      },
+      {
+        "course_name": "LLB (Bachelor of Laws)",
+        "level": "Undergraduate",
+        "duration": "3 Years",
+        "tuition_fee_per_year": "₹65,000"
+      },
+      {
+        "course_name": "B.Arch (Bachelor of Architecture)",
+        "level": "Undergraduate",
+        "duration": "5 Years",
+        "tuition_fee_per_year": "₹1,25,000"
+      },
+      {
+        "course_name": "B.Des (Bachelor of Design)",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,50,000"
+      },
+      {
+        "course_name": "MBBS (Bachelor of Medicine & Bachelor of Surgery)",
+        "level": "Undergraduate",
+        "duration": "5.5 Years",
+        "tuition_fee_per_year": "₹18,00,000"
+      },
+      {
+        "course_name": "BAMS (Bachelor of Ayurvedic Medicine & Surgery)",
+        "level": "Undergraduate",
+        "duration": "5.5 Years",
+        "tuition_fee_per_year": "₹4,50,000"
+      },
+      {
+        "course_name": "BHMS (Bachelor of Homeopathic Medicine & Surgery)",
+        "level": "Undergraduate",
+        "duration": "5.5 Years",
+        "tuition_fee_per_year": "₹2,25,000"
+      },
+      {
+        "course_name": "BPT (Bachelor of Physiotherapy)",
+        "level": "Undergraduate",
+        "duration": "4.5 Years",
+        "tuition_fee_per_year": "₹1,15,000"
+      },
+      {
+        "course_name": "B.Sc Nursing",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,10,000"
+      },
+      {
+        "course_name": "B.Sc Agriculture",
+        "level": "Undergraduate",
+        "duration": "4 Years",
+        "tuition_fee_per_year": "₹1,00,000"
+      },
+      {
+        "course_name": "B.Com (Bachelor of Commerce)",
+        "level": "Undergraduate",
+        "duration": "3 Years",
+        "tuition_fee_per_year": "₹60,000"
+      }
+    ],
+    "payment_methods": "Tuition fees can be paid via credit/debit card, net banking, UPI, or Demand Draft through the student ERP portal.",
+    "installment_plan": "Fees are payable on a semester-wise basis (twice a year). Extended monthly or quarterly installment plans can be requested at the accounts office.",
+    "refund_policy": "In line with UGC guidelines. A full refund (less INR 1,000 processing fee) is issued if requested before classes begin. Partial deductions apply dynamically after commencement."
+  },
+  "exams": {
+    "schedule": {
+      "mid_term": "October 20, 2026 - October 30, 2026",
+      "final_exam": "December 08, 2026 - December 24, 2026",
+      "results_release": "February 05, 2027"
+    },
+    "policies": {
+      "attendance_requirement": "Students must maintain a minimum of 75% attendance in theory lectures and practical labs to be eligible for final examinations.",
+      "grading_system": "10-point scale: O (Outstanding), A+ (Excellent), A (Very Good), B+ (Good), B (Above Average), C (Average), P (Pass), F (Fail). Passing criteria is 40% aggregate.",
+      "makeup_exams": "Remedial/Supplementary examinations are conducted after results declaration. Candidates with medical emergencies can apply for special exemption with a dean's request."
+    }
+  },
+  "syllabus": {
+    "B.Tech Computer Science & Engineering": {
+      "Semester 1": [
+        "CS101: Introduction to Programming in C/Python",
+        "MA101: Engineering Mathematics - I",
+        "PH101: Applied Physics & Optics",
+        "EE101: Basic Electrical & Electronics Engineering"
+      ],
+      "Semester 2": [
+        "CS201: Object Oriented Programming using Java",
+        "MA102: Engineering Mathematics - II",
+        "CS202: Digital Logic & Processor Architectures",
+        "HU101: Communication & Presentation Skills"
+      ],
+      "Semester 3": [
+        "CS301: Data Structures and Algorithms",
+        "CS302: Database Management Systems",
+        "CS303: Operating Systems Foundations",
+        "MA201: Discrete Mathematics"
+      ]
+    },
+    "B.Tech Information Technology": {
+      "Semester 1": [
+        "CS101: Introduction to Programming in C/Python",
+        "MA101: Engineering Mathematics - I",
+        "PH101: Applied Physics & Optics",
+        "HU101: Professional Communication Skills"
+      ],
+      "Semester 2": [
+        "CS203: Object-Oriented Technologies (Java)",
+        "IT201: Data Communications and Networks",
+        "MA102: Engineering Mathematics - II",
+        "CS202: Digital Logic & Design"
+      ],
+      "Semester 3": [
+        "IT301: Web Technologies & Applications",
+        "CS303: Operating Systems Foundations",
+        "CS302: Database Management Systems",
+        "CS301: Data Structures & Algorithms"
+      ]
+    },
+    "B.Tech Mechanical Engineering": {
+      "Semester 1": [
+        "ME101: Engineering Graphics & Drawing",
+        "ME102: Applied Mechanics",
+        "MA101: Engineering Mathematics - I",
+        "ME103: Workshop Technology Practice"
+      ],
+      "Semester 2": [
+        "ME201: Engineering Thermodynamics",
+        "ME202: Materials Science and Metallurgy",
+        "MA102: Engineering Mathematics - II",
+        "ME203: Computer-Aided Design (CAD)"
+      ],
+      "Semester 3": [
+        "ME301: Fluid Mechanics & Machinery",
+        "ME302: Strength of Materials",
+        "ME303: Kinematics of Machinery",
+        "ME304: Manufacturing Processes - I"
+      ]
+    },
+    "B.Tech Civil Engineering": {
+      "Semester 1": [
+        "CE101: Engineering Mechanics (Statics & Dynamics)",
+        "CE102: Elementary Surveying - I",
+        "MA101: Engineering Mathematics - I",
+        "CE103: Basic Geology & Soil Formations"
+      ],
+      "Semester 2": [
+        "CE201: Building Construction and Drawing",
+        "CE202: Fluid Mechanics - I",
+        "CE203: Strength of Structural Elements",
+        "CE204: Concrete Mix Design Technology"
+      ],
+      "Semester 3": [
+        "CE301: Structural Mechanics & Analysis",
+        "CE302: Environmental Engineering - I",
+        "CE303: Highway & Transportation Engineering",
+        "CE304: Surveying and Geomatics - II"
+      ]
+    },
+    "BCA (Bachelor of Computer Applications)": {
+      "Semester 1": [
+        "BCA101: Computer Fundamentals & Office Tools",
+        "BCA102: Programming Foundations using C",
+        "MA105: Mathematical Foundations for Computers",
+        "HU102: Technical Writing & Oral Communication"
+      ],
+      "Semester 2": [
+        "BCA201: Data Structures and Core Libraries",
+        "BCA202: Computer Organization and Architecture",
+        "BCA203: Database Management Systems (SQL)",
+        "BCA204: Principles of Management & Accounting"
+      ],
+      "Semester 3": [
+        "BCA301: Object Oriented Systems using Java",
+        "BCA302: Client-Side Web Tech (HTML/CSS/JS)",
+        "BCA303: Software Engineering Methodologies",
+        "MA205: Discrete Mathematical Logic"
+      ]
+    },
+    "MCA (Master of Computer Applications)": {
+      "Semester 1": [
+        "MCA101: Enterprise Java Programming",
+        "MCA102: Advanced DBMS & Query Tuning",
+        "MCA103: Software Architectures & Patterns",
+        "MA501: Probability & Quantitative Techniques"
+      ],
+      "Semester 2": [
+        "MCA201: Python for Data Science & AI",
+        "MCA202: Cloud Infrastructure & Services",
+        "MCA203: Network Security & Cryptography",
+        "MCA204: Design & Analysis of Algorithms"
+      ],
+      "Semester 3": [
+        "MCA301: Applied Machine Learning Algorithms",
+        "MCA302: Web Application Frameworks (React/Node)",
+        "MCA303: DevOps Pipelines & Agile Management",
+        "MCA304: Mobile Application Engineering (Android)"
+      ]
+    },
+    "B.Sc Data Science & AI": {
+      "Semester 1": [
+        "DS101: Introduction to Data Science & AI",
+        "CS101: Introduction to Programming in C/Python",
+        "MA101: Linear Algebra and Calculus",
+        "DS102: Statistical Methods & Probability"
+      ],
+      "Semester 2": [
+        "DS201: Fundamentals of Machine Learning",
+        "DS202: Data Analysis & Visualization Techniques",
+        "CS201: Data Structures and Algorithms",
+        "DS203: SQL and NoSQL Database Systems"
+      ]
+    },
+    "Bachelor of Business Administration (BBA)": {
+      "Semester 1": [
+        "BBA101: Principles and Practices of Management",
+        "BBA102: Business Economics (Micro)",
+        "BBA103: Financial Accounting Systems",
+        "HU101: Professional Communication"
+      ],
+      "Semester 2": [
+        "BBA201: Organizational Behavior & Dynamics",
+        "BBA202: Business Mathematics and Quantitative Tools",
+        "BBA203: Fundamentals of Marketing Management",
+        "BBA204: Macroeconomics & Policies"
+      ]
+    },
+    "MBA (Master of Business Administration)": {
+      "Semester 1": [
+        "MBA101: Managerial Economics",
+        "MBA102: Financial Management & Accounting",
+        "MBA103: Organizational Behaviour & HR",
+        "MBA104: Quantitative Methods for Decision Making"
+      ],
+      "Semester 2": [
+        "MBA201: Marketing Management & Strategy",
+        "MBA202: Production and Operations Management",
+        "MBA203: Business Research Methodologies",
+        "MBA204: Strategic Management & Policies"
+      ]
+    },
+    "B.Pharmacy (Bachelor of Pharmacy)": {
+      "Semester 1": [
+        "BP101T: Human Anatomy and Physiology - I",
+        "BP102T: Pharmaceutical Analysis - I",
+        "BP103T: Pharmaceutics - I (General & Dispensing)",
+        "BP104T: Pharmaceutical Inorganic Chemistry"
+      ],
+      "Semester 2": [
+        "BP201T: Human Anatomy and Physiology - II",
+        "BP202T: Pharmaceutical Organic Chemistry - I",
+        "BP203T: Biochemistry & Molecular Biology",
+        "BP204T: Pathophysiology of Common Diseases"
+      ],
+      "Semester 3": [
+        "BP301T: Pharmaceutical Organic Chemistry - II",
+        "BP302T: Physical Pharmaceutics - I",
+        "BP303T: Pharmaceutical Microbiology",
+        "BP304T: Pharmaceutical Engineering Processes"
+      ]
+    },
+    "LLB (Bachelor of Laws)": {
+      "Semester 1": [
+        "LLB101: Constitutional Law of India - I",
+        "LLB102: Law of Torts & Consumer Protection",
+        "LLB103: General Principles of Contract - I",
+        "LLB104: Family Law - I (Hindu Law)"
+      ],
+      "Semester 2": [
+        "LLB201: Constitutional Law of India - II",
+        "LLB202: Law of Special Contracts - II",
+        "LLB203: Criminal Law - I (Indian Penal Code)",
+        "LLB204: Family Law - II (Muslim Law)"
+      ],
+      "Semester 3": [
+        "LLB301: Jurisprudence (Legal Theory)",
+        "LLB302: Criminal Law - II (CrPC & Evidence)",
+        "LLB303: Transfer of Property and Easement Laws",
+        "LLB304: Environmental Law & Guidelines"
+      ]
+    },
+    "B.Arch (Bachelor of Architecture)": {
+      "Semester 1": [
+        "AR101: Basic Architectural Design Studio - I",
+        "AR102: Visual Arts, Sketching and Graphics",
+        "AR103: Building Materials and Construction - I",
+        "AR104: Theory and Aesthetics of Design"
+      ],
+      "Semester 2": [
+        "AR201: Architectural Design Studio - II",
+        "AR202: Building Construction & Technology - II",
+        "AR203: Architectural Drawing & Orthographic Projections",
+        "AR204: History of Western & Indian Architecture - I"
+      ],
+      "Semester 3": [
+        "AR301: Architectural Design Studio - III",
+        "AR302: Applied Structures & Design - I",
+        "AR303: Climatology and Passive Solar Design",
+        "AR304: Building Services - I (Sanitation & Plumbing)"
+      ]
+    },
+    "B.Des (Bachelor of Design)": {
+      "Semester 1": [
+        "DES101: Design Fundamentals and Spatial Concepts",
+        "DES102: Freehand Sketching and Representation Techniques",
+        "DES103: Elements of Color and Composition Theory",
+        "DES104: History of Global Art & Design Aesthetics"
+      ],
+      "Semester 2": [
+        "DES201: Typography, Grid Layouts and Branding",
+        "DES202: Visual Identity, Logos and Vector Graphics",
+        "DES203: Digital Creation Tools (Photoshop/Illustrator)",
+        "DES204: Spatial Geometry and Interior Volumes"
+      ],
+      "Semester 3": [
+        "DES301: Material and Manufacturing Processes",
+        "DES302: User Interface (UI) Design Frameworks",
+        "DES303: Interaction and UX Design Prototyping",
+        "DES304: Brand Strategy & Marketing Communication"
+      ]
+    },
+    "MBBS (Bachelor of Medicine & Bachelor of Surgery)": {
+      "Phase I (1st Professional Year)": [
+        "ANA: Human Anatomy (Gross, Micro & Embryology)",
+        "PHY: Human Physiology & Biophysics",
+        "BIO: Medical Biochemistry & Molecular Biology",
+        "COM1: Community Medicine & Public Health - I"
+      ],
+      "Phase II (2nd Professional Year)": [
+        "PAT: Pathology (General, Systemic & Hematology)",
+        "MIC: Medical Microbiology, Immunology & Parasitology",
+        "PHA: Pharmacology & Therapeutic Drug Usage",
+        "FOR: Forensic Medicine & Medical Jurisprudence"
+      ],
+      "Phase III (3rd Professional Year)": [
+        "ENT: Otorhinolaryngology (ENT Diseases & Surgery)",
+        "OPH: Ophthalmology (Eye Diseases & Vision Sciences)",
+        "COM2: Community Health and Preventive Medicine - II"
+      ]
+    },
+    "BAMS (Bachelor of Ayurvedic Medicine & Surgery)": {
+      "Professional Year 1": [
+        "BAM101: Rachana Sharir (Ayurvedic Human Anatomy)",
+        "BAM102: Kriya Sharir (Ayurvedic Human Physiology)",
+        "BAM103: Padartha Vigyan evam Ayurveda Itihas",
+        "BAM104: Sanskrit Bhasha Sopanam"
+      ],
+      "Professional Year 2": [
+        "BAM201: Dravyaguna Vijnana (Ayurvedic Pharmacology)",
+        "BAM202: Rasa Shastra evam Bhaishajya Kalpana",
+        "BAM203: Roga Nidan evam Vikriti Vigyan (Pathology)",
+        "BAM204: Charaka Samhita (Purvardha)"
+      ]
+    },
+    "BHMS (Bachelor of Homeopathic Medicine & Surgery)": {
+      "Professional Year 1": [
+        "BHM101: Homeopathic Pharmacy Principles & Lab",
+        "BHM102: Human Anatomy & Applied Dissection",
+        "BHM103: Physiology & Medical Biochemistry",
+        "BHM104: Organon of Medicine & Homeopathic Philosophy"
+      ],
+      "Professional Year 2": [
+        "BHM201: Pathology, Bacteriology & Parasitology",
+        "BHM202: Forensic Medicine & Toxicology",
+        "BHM203: Homoeopathic Materia Medica & Therapeutics"
+      ]
+    },
+    "BPT (Bachelor of Physiotherapy)": {
+      "Semester 1": [
+        "BPT101: Human Anatomy (Musculoskeletal focus)",
+        "BPT102: Human Physiology & Systems",
+        "BPT103: Clinical Biochemistry & Biophysics",
+        "BPT104: Psychology & Sociology for Therapists"
+      ],
+      "Semester 2": [
+        "BPT201: Biomechanics, Kinesiology & Posture",
+        "BPT202: Electrotherapy Fundamentals - I",
+        "BPT203: Exercise Therapy Techniques - I",
+        "BPT204: Pathology & Microbiology Basics"
+      ],
+      "Semester 3": [
+        "BPT301: Clinical Electrotherapy - II",
+        "BPT302: Applied Exercise Therapy - II",
+        "BPT303: Clinical Pharmacology for Therapists"
+      ]
+    },
+    "B.Sc Nursing": {
+      "Semester 1": [
+        "NUR101: Anatomy & Physiology for Nurses",
+        "NUR102: Nutrition, Dietetics & Biochemistry",
+        "NUR103: Nursing Foundations - I (Clinical Basics)",
+        "NUR104: Applied Psychology for Patient Care"
+      ],
+      "Semester 2": [
+        "NUR201: Nursing Foundations - II (Advanced Skill)",
+        "NUR202: Microbiology & Infection Control",
+        "NUR203: Intro to Medical Computers & Infotech",
+        "NUR204: Preventive Medicine and Personal Hygiene"
+      ],
+      "Semester 3": [
+        "NUR301: Medical Surgical Nursing - I (Adult care)",
+        "NUR302: Pharmacology and Dosage Formulations",
+        "NUR303: Pathology, Genetics & Tissue Diagnostics",
+        "NUR304: Community Health Nursing - I"
+      ]
+    },
+    "B.Sc Agriculture": {
+      "Semester 1": [
+        "AGR101: Fundamentals of Agronomy & Crop Production",
+        "AGR102: Agricultural Meteorology & Climate",
+        "AGR103: Introductory Soil Science & Chemistry",
+        "AGR104: Agricultural Heritage & India Policies"
+      ],
+      "Semester 2": [
+        "AGR201: Principles of Genetics & Plant Breeding",
+        "AGR202: Agricultural Economics & Farm Management",
+        "AGR203: Soil Chemistry and Fertility Testing",
+        "AGR204: Fundamentals of Agricultural Entomology"
+      ],
+      "Semester 3": [
+        "AGR301: Plant & Crop Physiology",
+        "AGR302: Fundamentals of Plant Pathology",
+        "AGR303: Agricultural Extension Education Methods",
+        "AGR304: Livestock and Poultry Production Management"
+      ]
+    },
+    "B.Com (Bachelor of Commerce)": {
+      "Semester 1": [
+        "BCOM101: Advanced Financial Accounting - I",
+        "BCOM102: Business Organization and Management",
+        "BCOM103: Microeconomics & Market Analysis",
+        "BCOM104: Business Mathematics & Quantitative Tools"
+      ],
+      "Semester 2": [
+        "BCOM201: Financial Accounting Systems - II",
+        "BCOM202: Corporate & Business Legislation Laws",
+        "BCOM203: Macroeconomics & Monetary Policies",
+        "BCOM204: Business Statistics & Indexing"
+      ],
+      "Semester 3": [
+        "BCOM301: Cost and Management Accounting",
+        "BCOM302: Income Tax Law and Personal Audits",
+        "BCOM303: E-Commerce & Retail Technology Platforms",
+        "BCOM304: Modern Banking and Financial Services"
+      ]
+    }
+  }
+}

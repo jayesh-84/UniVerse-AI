@@ -1,0 +1,800 @@
+[
+  {
+    "timestamp": "2026-07-04 18:22:11",
+    "query": "Show me the course fee structures per year",
+    "engine": "Local NLP Engine (API Failover)",
+    "status": "Warning",
+    "latency": "0.57s"
+  },
+  {
+    "timestamp": "2026-07-04 18:15:36",
+    "query": "Syllabus (Engineering)",
+    "engine": "Local NLP Engine (API Failover)",
+    "status": "Warning",
+    "latency": "0.40s"
+  },
+  {
+    "timestamp": "2026-07-04 18:15:16",
+    "query": "Hii",
+    "engine": "Local NLP Engine (API Failover)",
+    "status": "Warning",
+    "latency": "0.89s"
+  },
+  {
+    "timestamp": "2026-07-04 13:41:04",
+    "query": "What are the B.Tech admission requirements and deadlines? (Please respond in Hindi)",
+    "engine": "Local NLP Engine (API Failover)",
+    "status": "Warning",
+    "latency": "0.82s"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Favorited Course ID: 1",
+    "timestamp": "2026-07-05 23:29:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Submitted tracker application: B.Tech CSE at parul",
+    "timestamp": "2026-07-05 23:29:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Updated profile credentials.",
+    "timestamp": "2026-07-05 23:29:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Submitted tracker application: B.Tech CSE at parul",
+    "timestamp": "2026-07-05 23:30:30"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Updated profile credentials.",
+    "timestamp": "2026-07-05 23:30:30"
+  },
+  {
+    "user_id": "jp9082617@gmail.com",
+    "action": "Updated profile credentials.",
+    "timestamp": "2026-07-05 23:33:35"
+  },
+  {
+    "user_id": "jp9082617@gmail.com",
+    "action": "Updated profile credentials.",
+    "timestamp": "2026-07-05 23:33:54"
+  },
+  {
+    "user_id": "jp9082617@gmail.com",
+    "action": "Bookmarked University: parul",
+    "timestamp": "2026-07-05 23:34:10"
+  },
+  {
+    "user_id": "jp9082617@gmail.com",
+    "action": "Favorited Course ID: 249",
+    "timestamp": "2026-07-05 23:37:03"
+  },
+  {
+    "user_id": "jp9082617@gmail.com",
+    "action": "Bookmarked University: iitb",
+    "timestamp": "2026-07-05 23:37:16"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Submitted tracker application: B.Tech CSE at parul",
+    "timestamp": "2026-07-06 13:13:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Updated profile credentials.",
+    "timestamp": "2026-07-06 13:13:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Favorited Course ID: 1",
+    "timestamp": "2026-07-14 00:39:09"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Submitted tracker application: B.Tech CSE at parul",
+    "timestamp": "2026-07-14 00:39:09"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Updated profile credentials.",
+    "timestamp": "2026-07-14 00:39:09"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 14:28:43"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 14:28:43"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 14:28:43"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 14:28:43"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 14:28:43"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 14:28:43"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 14:29:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 14:29:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 14:29:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 14:29:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 14:29:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 14:29:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 14:29:25"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 14:29:25"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 14:29:25"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 14:29:25"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 14:29:25"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 14:29:25"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 16:10:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 16:10:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 16:10:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 16:10:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 16:10:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 16:10:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 22:15:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 22:15:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 22:15:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 22:15:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 22:15:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 22:15:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 22:17:21"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 22:17:21"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 22:17:21"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 22:17:21"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 22:17:21"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 22:17:21"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 22:53:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 22:53:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 22:53:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 22:53:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 22:53:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 22:53:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-14 23:56:22"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-14 23:56:22"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-14 23:56:22"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-14 23:56:22"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-14 23:56:22"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-14 23:56:22"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 19:09:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 19:09:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 19:09:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 19:09:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 19:09:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 19:09:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 21:53:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 21:53:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 21:53:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 21:53:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 21:53:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 21:53:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 21:56:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 21:56:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 21:56:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 21:56:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 21:56:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 21:56:36"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:01:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:01:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:01:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:01:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:01:04"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:01:05"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:03:49"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:03:49"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:03:49"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:03:49"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:03:49"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:03:49"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:06:32"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:06:32"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:06:32"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:06:32"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:06:32"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:06:32"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:11:38"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:11:38"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:11:38"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:11:38"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:11:38"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:11:38"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:16:59"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:17:00"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:17:00"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:17:00"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:17:00"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:17:00"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:27:14"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:27:14"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:27:14"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:27:14"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:27:14"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:27:14"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:27:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:27:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:27:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:27:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:27:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:27:50"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:37:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:37:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:37:34"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:37:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:37:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:37:35"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-16 22:57:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-16 22:57:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-16 22:57:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-16 22:57:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-16 22:57:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-16 22:57:55"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-17 12:02:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-17 12:02:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-17 12:02:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-17 12:02:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-17 12:02:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-17 12:02:24"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-17 18:34:18"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-17 18:34:18"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-17 18:34:19"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-17 18:34:19"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-17 18:34:19"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-17 18:34:19"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked university: Test University",
+    "timestamp": "2026-07-17 18:57:07"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked course: Test Course",
+    "timestamp": "2026-07-17 18:57:07"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked scholarship: Test Scholarship",
+    "timestamp": "2026-07-17 18:57:07"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked announcement: Test Announcement",
+    "timestamp": "2026-07-17 18:57:08"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked faculty: Test Faculty",
+    "timestamp": "2026-07-17 18:57:08"
+  },
+  {
+    "user_id": "student@univ.ac.in",
+    "action": "Bookmarked gallery: Test Gallery",
+    "timestamp": "2026-07-17 18:57:08"
+  },
+  {
+    "user_id": "jp9082617@gmail.com",
+    "action": "Bookmarked university: IIT Madras",
+    "timestamp": "2026-07-17 23:59:55"
+  }
+]

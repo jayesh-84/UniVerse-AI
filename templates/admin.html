@@ -1,0 +1,724 @@
+{% extends 'base.html' %}
+
+{% block title %}Parul University - AI Helpdesk Console{% endblock %}
+
+{% block head_extra %}
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block body_tag %}<body class="light-mode">{% endblock %}
+
+{% block content %}
+
+    <!-- Admin Wrapper Grid -->
+    <div class="admin-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="univ-title">Parul University</span>
+                    <span class="portal-tag">Console Panel</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="overview">
+                    <i class="fa-solid fa-chart-line"></i><span>Overview</span>
+                </button>
+                <button class="nav-btn" data-tab="university-details">
+                    <i class="fa-solid fa-school"></i><span>General Details</span>
+                </button>
+                <button class="nav-btn" data-tab="tuition-fees">
+                    <i class="fa-solid fa-wallet"></i><span>Tuition & Fees</span>
+                </button>
+                <button class="nav-btn" data-tab="gemini-settings">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i><span>Gemini API</span>
+                </button>
+                <button class="nav-btn" data-tab="faq-registry">
+                    <i class="fa-solid fa-question-circle"></i><span>FAQ Registry</span>
+                </button>
+                <button class="nav-btn" data-tab="chat-logs">
+                    <i class="fa-solid fa-history"></i><span>Chat Logs</span>
+                </button>
+                <button class="nav-btn" data-tab="user-management">
+                    <i class="fa-solid fa-users-gear"></i><span>User Registry</span>
+                </button>
+                <button class="nav-btn" data-tab="announcements">
+                    <i class="fa-solid fa-bullhorn"></i><span>Announcements</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="d-flex align-items-center justify-content-between w-100 mb-3">
+                    <span class="small-text">App Mode</span>
+                    <button class="theme-toggle-circle" id="admin-theme-toggle">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+                <a href="/" class="return-home-btn text-decoration-none text-center">
+                    <i class="fa-solid fa-arrow-left"></i> Return to Chat
+                </a>
+                <button onclick="adminLogout()" class="btn btn-outline-danger w-100 btn-sm fw-bold d-block text-center mt-2 py-2" style="border-radius: 8px;">
+                    <i class="fa-solid fa-power-off me-1"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Console Interface -->
+        <main class="console-main">
+            <!-- Top Status Bar -->
+            <header class="console-header d-flex justify-content-between align-items-center">
+                <div class="header-left d-flex align-items-center gap-3">
+                    <h2 class="section-heading-title" id="active-panel-title">Overview Dashboard</h2>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle fw-bold" type="button" id="adminUnivSelectorDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius:8px;">
+                            <i class="fa-solid fa-building-columns text-danger me-1"></i>
+                            <span id="admin-current-univ-label">Manage: Parul University</span>
+                        </button>
+                        <ul class="dropdown-menu shadow" id="admin-univ-selector-list" aria-labelledby="adminUnivSelectorDropdown" style="max-height: 250px; overflow-y: auto; font-size:12px;">
+                            <!-- Rendered dynamically -->
+                        </ul>
+                    </div>
+                    <button class="btn btn-danger btn-sm fw-bold ms-2" id="btn-add-new-univ" data-bs-toggle="modal" data-bs-target="#addUnivModal" style="border-radius:8px;">
+                        <i class="fa-solid fa-plus me-1"></i> Add University
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm fw-bold ms-2" id="btn-delete-active-univ" style="border-radius:8px;">
+                        <i class="fa-solid fa-trash me-1"></i> Delete University
+                    </button>
+                </div>
+                <div class="header-right d-flex align-items-center gap-3">
+                    <div class="api-status-pill" id="api-status-indicator">
+                        <i class="fa-solid fa-circle"></i> <span>Offline NLP</span>
+                    </div>
+                    <div class="user-avatar-badge">
+                        <i class="fa-regular fa-circle-user"></i>
+                        <span>admin@universe-ai.co.in</span>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dynamic Panels Container -->
+            <div class="console-body">
+                
+                <!-- Panel 1: Overview / Analytics -->
+                <section class="panel-section active" id="panel-overview">
+                    <!-- Stats Grid -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="analytics-card">
+                                <div class="card-icon-box bg-rose-light text-rose">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </div>
+                                <div class="analytics-info">
+                                    <span class="card-label">Total API Calls</span>
+                                    <h3 class="card-count" id="stat-total-api">0</h3>
+                                    <span class="card-delta positive"><i class="fa-solid fa-arrow-trend-up"></i> +12% this week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="analytics-card">
+                                <div class="card-icon-box bg-blue-light text-blue">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div class="analytics-info">
+                                    <span class="card-label">Gemini Queries</span>
+                                    <h3 class="card-count" id="stat-gemini-calls">0</h3>
+                                    <span class="card-delta positive"><i class="fa-solid fa-arrow-trend-up"></i> +18% this week</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="analytics-card">
+                                <div class="card-icon-box bg-amber-light text-amber">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <div class="analytics-info">
+                                    <span class="card-label">Avg. Response Time</span>
+                                    <h3 class="card-count">0.45s</h3>
+                                    <span class="card-delta negative"><i class="fa-solid fa-arrow-trend-down"></i> -4% latency drop</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="analytics-card">
+                                <div class="card-icon-box bg-emerald-light text-emerald">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div class="analytics-info">
+                                    <span class="card-label">Logged Students</span>
+                                    <h3 class="card-count" id="stat-active-students">0</h3>
+                                    <span class="card-delta positive"><i class="fa-solid fa-arrow-trend-up"></i> +5% today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts section -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-8">
+                            <div class="console-card">
+                                <h5 class="card-title">Daily Query Volume</h5>
+                                <div class="chart-container" style="position: relative; height:280px; width:100%">
+                                    <canvas id="queryVolumeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="console-card">
+                                <h5 class="card-title">Query Category Distribution</h5>
+                                <div class="chart-container d-flex align-items-center justify-content-center" style="position: relative; height:280px; width:100%">
+                                    <canvas id="categoryDistributionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Panel 2: General Details (Campus info, admissions guidelines) -->
+                <section class="panel-section" id="panel-university-details">
+                    <div class="console-card max-w-800 mx-auto">
+                        <h4 class="card-title-lg">University & Admission Records</h4>
+                        <hr class="card-divider">
+                        
+                        <form id="university-details-form">
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="univ-name">University Name</label>
+                                <input type="text" class="form-control" id="univ-name">
+                            </div>
+                            
+                            <h5 class="section-subtitle">Contact Directories</h5>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="univ-email">General Helpline Email</label>
+                                    <input type="email" class="form-control" id="univ-email">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="univ-phone">Admissions Helpline</label>
+                                    <input type="text" class="form-control" id="univ-phone">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="univ-address">Campus Address</label>
+                                <input type="text" class="form-control" id="univ-address">
+                            </div>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="univ-hours">Office Hours</label>
+                                    <input type="text" class="form-control" id="univ-hours">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="univ-website">Official Website URL</label>
+                                    <input type="url" class="form-control" id="univ-website">
+                                </div>
+                            </div>
+                            
+                            <h5 class="section-subtitle">Undergraduate Admissions</h5>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="ug-deadline">Application Deadline</label>
+                                <input type="text" class="form-control" id="ug-deadline">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="ug-eligible">Eligibility Criteria</label>
+                                <textarea class="form-control" id="ug-eligible" rows="2"></textarea>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label" for="ug-process">Registration Process Steps</label>
+                                <textarea class="form-control" id="ug-process" rows="2"></textarea>
+                            </div>
+                            
+                            <h5 class="section-subtitle">Postgraduate Admissions</h5>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="pg-deadline">Application Deadline</label>
+                                <input type="text" class="form-control" id="pg-deadline">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="pg-eligible">Eligibility Criteria</label>
+                                <textarea class="form-control" id="pg-eligible" rows="2"></textarea>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label" for="pg-process">Registration Process Steps</label>
+                                <textarea class="form-control" id="pg-process" rows="2"></textarea>
+                            </div>
+
+                            <h5 class="section-subtitle">Exams Scheduling Calendar</h5>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="exam-mid">Mid-Term Exams Range</label>
+                                    <input type="text" class="form-control" id="exam-mid">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="exam-final">Final Exams Range</label>
+                                    <input type="text" class="form-control" id="exam-final">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="exam-result">Results Release Announcement</label>
+                                <input type="text" class="form-control" id="exam-result">
+                            </div>
+
+                            <h5 class="section-subtitle">Academic Policies</h5>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="policy-attendance">Minimum Attendance Policy</label>
+                                <input type="text" class="form-control" id="policy-attendance">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label class="form-label" for="policy-grading">UGC Grading Matrix</label>
+                                <input type="text" class="form-control" id="policy-grading">
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label" for="policy-makeup">Makeup / Remedial Exams Policy</label>
+                                <textarea class="form-control" id="policy-makeup" rows="2"></textarea>
+                            </div>
+
+                            <h5 class="section-subtitle mt-4"><i class="fa-solid fa-users-viewfinder text-danger me-2"></i>Faculty Member Directory</h5>
+                            <div class="table-responsive mb-3 border border-slate-100 rounded-lg p-2 bg-light-custom">
+                                <table class="table table-sm table-hover align-middle" style="font-size: 11px;">
+                                    <thead>
+                                        <tr class="fw-bold">
+                                            <th>Name</th>
+                                            <th>Designation</th>
+                                            <th>Department</th>
+                                            <th>Email</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-faculty-table-rows">
+                                        <!-- Rendered dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row g-2 mb-4">
+                                <div class="col-md-3"><input type="text" class="form-control form-control-sm" id="new-fac-name" placeholder="Full Name"></div>
+                                <div class="col-md-3"><input type="text" class="form-control form-control-sm" id="new-fac-desig" placeholder="e.g. Professor"></div>
+                                <div class="col-md-3"><input type="text" class="form-control form-control-sm" id="new-fac-dept" placeholder="e.g. CSE"></div>
+                                <div class="col-md-2"><input type="email" class="form-control form-control-sm" id="new-fac-email" placeholder="Email Address"></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm w-100" id="btn-add-fac-member"><i class="fa-solid fa-plus"></i></button></div>
+                            </div>
+
+                            <h5 class="section-subtitle mt-4"><i class="fa-solid fa-award text-danger me-2"></i>Scholarships Schemes</h5>
+                            <div class="table-responsive mb-3 border border-slate-100 rounded-lg p-2 bg-light-custom">
+                                <table class="table table-sm table-hover align-middle" style="font-size: 11px;">
+                                    <thead>
+                                        <tr class="fw-bold">
+                                            <th>Title</th>
+                                            <th>Eligibility Criteria</th>
+                                            <th>Amount / Value</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-schol-table-rows">
+                                        <!-- Rendered dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row g-2 mb-4">
+                                <div class="col-md-4"><input type="text" class="form-control form-control-sm" id="new-schol-title" placeholder="Scholarship Title"></div>
+                                <div class="col-md-4"><input type="text" class="form-control form-control-sm" id="new-schol-elig" placeholder="Eligibility (e.g. secure >90%)"></div>
+                                <div class="col-md-3"><input type="text" class="form-control form-control-sm" id="new-schol-amount" placeholder="Amount (e.g. 50% waiver)"></div>
+                                <div class="col-md-1"><button type="button" class="btn btn-danger btn-sm w-100" id="btn-add-schol-member"><i class="fa-solid fa-plus"></i></button></div>
+                            </div>
+
+                            <h5 class="section-subtitle mt-4"><i class="fa-solid fa-briefcase text-danger me-2"></i>Placements Record & Statistics</h5>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-4 form-group">
+                                    <label class="form-label small font-bold" for="pl-highest">Highest Package (e.g. 35.0 LPA)</label>
+                                    <input type="text" class="form-control form-control-sm" id="pl-highest">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label class="form-label small font-bold" for="pl-average">Average Package (e.g. 5.5 LPA)</label>
+                                    <input type="text" class="form-control form-control-sm" id="pl-average">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label class="form-label small font-bold" for="pl-rate">Placement Success Rate (e.g. 90%)</label>
+                                    <input type="text" class="form-control form-control-sm" id="pl-rate">
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label small font-bold" for="pl-recruiters">Top Recruiters List (JSON format or comma separated list)</label>
+                                <input type="text" class="form-control form-control-sm" id="pl-recruiters">
+                            </div>
+
+                            <h5 class="section-subtitle mt-4"><i class="fa-solid fa-images text-danger me-2"></i>Campus Gallery Photos</h5>
+                            <div class="row g-2 mb-3 border border-slate-100 rounded-lg p-3 bg-light-custom" id="admin-gallery-preview-grid" style="max-height: 250px; overflow-y: auto;">
+                                <!-- Image url cards populated dynamically -->
+                            </div>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fa-solid fa-link text-muted"></i></span>
+                                <input type="url" class="form-control form-control-sm" id="new-gallery-url" placeholder="Paste campus layout image URL here...">
+                                <button class="btn btn-danger btn-sm" type="button" id="btn-add-gallery-img">Add URL</button>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label font-bold text-muted small" style="font-size:10px;">Or Upload Image File</label>
+                                <input type="file" class="form-control form-control-sm" id="new-gallery-file" accept="image/*">
+                            </div>
+
+                            <div class="text-end">
+                                <button type="button" class="btn btn-danger px-4 py-2 fw-semibold" id="save-university-btn">
+                                    <i class="fa-solid fa-save me-1"></i> Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                
+                <!-- Panel 3: Tuition & Fees -->
+                <section class="panel-section" id="panel-tuition-fees">
+                    <div class="console-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <h4 class="card-title-lg mb-0">Program Fees & Payments Policy</h4>
+                            <button class="btn btn-danger btn-sm" id="btn-add-course">
+                                <i class="fa-solid fa-plus me-1"></i> Add New Program
+                            </button>
+                        </div>
+                        <hr class="card-divider">
+                        
+                        <form id="fees-policy-form" class="mb-4">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="fees-methods">Permitted Payment Methods</label>
+                                    <input type="text" class="form-control" id="fees-methods">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="form-label" for="fees-refund">UGC Refund Policy Details</label>
+                                    <input type="text" class="form-control" id="fees-refund">
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label" for="fees-installments">Semester Installment Schedule</label>
+                                <textarea class="form-control" id="fees-installments" rows="2"></textarea>
+                            </div>
+                        </form>
+                        
+                        <!-- Search Bar -->
+                        <div class="search-table-wrapper d-flex gap-3 align-items-center mb-3">
+                            <div class="input-group search-group">
+                                <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
+                                <input type="text" class="form-control" id="fee-search-input" placeholder="Search course by name level or duration...">
+                            </div>
+                        </div>
+                        
+                        <!-- Table -->
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Program Name</th>
+                                        <th>Academic Level</th>
+                                        <th>Duration</th>
+                                        <th>Tuition (Per Year)</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fees-table-rows">
+                                    <!-- Dynamic rows loaded from config -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination controls -->
+                        <div class="table-pagination-footer d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                            <span class="text-muted small" id="fee-table-info">Showing 1 to 5 of 20 courses</span>
+                            <div class="btn-group gap-1">
+                                <button class="btn btn-outline-secondary btn-xs" id="btn-fee-prev" disabled>Previous</button>
+                                <button class="btn btn-outline-secondary btn-xs" id="btn-fee-next">Next</button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-end mt-4">
+                            <button type="button" class="btn btn-danger px-4 py-2 fw-semibold" id="save-fees-btn">
+                                <i class="fa-solid fa-save me-1"></i> Save Fee System
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Panel 4: Gemini settings -->
+                <section class="panel-section" id="panel-gemini-settings">
+                    <div class="console-card max-w-600 mx-auto">
+                        <div class="text-center mb-4">
+                            <div class="ai-branding-icon">
+                                <i class="fa-solid fa-wand-magic-sparkles text-danger"></i>
+                            </div>
+                            <h4 class="mt-3 card-title-lg">Gemini Generative Engine Settings</h4>
+                            <p class="text-muted small">Configure access token parameters to integrate contextual generative AI models.</p>
+                        </div>
+                        
+                        <hr class="card-divider">
+                        
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="gemini-api-key">Gemini Developer API Key</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-key text-muted"></i></span>
+                                <input type="password" class="form-control" id="gemini-api-key" placeholder="Enter API Key (e.g. AIzaSy...)">
+                                <button class="btn btn-danger fw-semibold" id="btn-save-api-key" type="button">Save Key</button>
+                            </div>
+                            <p class="form-text text-muted mt-2">
+                                <i class="fa-solid fa-circle-info me-1"></i> When configured, response processing will route to `gemini-1.5-flash` with local JSON records injected as system instructions.
+                            </p>
+                        </div>
+                        
+                        <div class="api-diagnostics-box" id="key-diagnostic-state">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="diagnostics-indicator bg-amber-light text-amber" id="diag-indicator">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                </div>
+                                <div class="diagnostics-details text-start">
+                                    <h6 class="mb-0 fw-bold" id="diag-title">Checking connection status...</h6>
+                                    <span class="text-muted small" id="diag-desc">Offline rule matching will apply by default.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Panel 5: FAQ Registry (managing syllabus / curriculum questions) -->
+                <section class="panel-section" id="panel-faq-registry">
+                    <div class="console-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <h4 class="card-title-lg mb-0">Academic Curriculum Syllabi</h4>
+                            <button class="btn btn-danger btn-sm" id="btn-add-syllabus">
+                                <i class="fa-solid fa-plus me-1"></i> Add Syllabus Program
+                            </button>
+                        </div>
+                        <hr class="card-divider">
+                        
+                        <!-- Search Bar -->
+                        <div class="search-table-wrapper d-flex gap-3 align-items-center mb-3">
+                            <div class="input-group search-group">
+                                <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
+                                <input type="text" class="form-control" id="faq-search-input" placeholder="Search syllabus by course program name...">
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion for Syllabi editing -->
+                        <div class="accordion custom-accordion" id="faqAccordion">
+                            <!-- Dynamic Accordion Items populated by JS -->
+                        </div>
+                        
+                        <div class="text-end mt-4">
+                            <button type="button" class="btn btn-danger px-4 py-2 fw-semibold" id="save-syllabus-btn">
+                                <i class="fa-solid fa-save me-1"></i> Save Syllabi Matrix
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Panel 6: Chat Logs -->
+                <section class="panel-section" id="panel-chat-logs">
+                    <div class="console-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <h4 class="card-title-lg mb-0">Helpdesk Session Logs</h4>
+                            <button class="btn btn-outline-secondary btn-sm" id="btn-clear-mock-logs">
+                                <i class="fa-solid fa-trash-can me-1"></i> Clear Logs
+                            </button>
+                        </div>
+                        <hr class="card-divider">
+                        
+                        <div class="search-table-wrapper mb-3">
+                            <div class="input-group search-group">
+                                <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
+                                <input type="text" class="form-control" id="logs-search-input" placeholder="Search logs by query string, response source or status...">
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Student Query</th>
+                                        <th>Engine Source</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Latency</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="logs-table-rows">
+                                    <!-- Dynamic rows from mock data -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-pagination-footer d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                            <span class="text-muted small" id="logs-table-info">Showing 1 to 5 of 120 entries</span>
+                            <div class="btn-group gap-1">
+                                <button class="btn btn-outline-secondary btn-xs" id="btn-logs-prev" disabled>Previous</button>
+                                <button class="btn btn-outline-secondary btn-xs" id="btn-logs-next">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Panel 7: User Management -->
+                <section class="panel-section" id="panel-user-management">
+                    <div class="console-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <h4 class="card-title-lg mb-0">Student Users Registry</h4>
+                            <button class="btn btn-danger btn-sm" id="btn-add-mock-user">
+                                <i class="fa-solid fa-plus me-1"></i> Add Student
+                            </button>
+                        </div>
+                        <hr class="card-divider">
+                        
+                        <div class="search-table-wrapper mb-3">
+                            <div class="input-group search-group">
+                                <span class="input-group-text"><i class="fa-solid fa-search"></i></span>
+                                <input type="text" class="form-control" id="users-search-input" placeholder="Search students by name, email or enrollment ID...">
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email Address</th>
+                                        <th>Enrollment ID</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="users-table-rows">
+                                    <!-- Dynamic rows from mock data -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-pagination-footer d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+                            <span class="text-muted small" id="users-table-info">Showing 1 to 5 of 15 registered students</span>
+                            <div class="btn-group gap-1">
+                                <button class="btn btn-outline-secondary btn-xs" id="btn-users-prev" disabled>Previous</button>
+                                <button class="btn btn-outline-secondary btn-xs" id="btn-users-next">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Panel 8: Announcements -->
+                <section class="panel-section" id="panel-announcements">
+                    <div class="console-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                            <h4 class="card-title-lg mb-0">Banners & Campaign Announcements</h4>
+                            <button class="btn btn-danger btn-sm" id="btn-new-announcement" data-bs-toggle="modal" data-bs-target="#addAnnouncementModal">
+                                <i class="fa-solid fa-plus me-1"></i> New Banner
+                            </button>
+                        </div>
+                        <hr class="card-divider">
+                        
+                        <div class="row g-4" id="announcements-cards-grid">
+                            <!-- Announcements lists from mock configs -->
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </main>
+        
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast hidden" id="admin-toast">
+        <i class="fa-solid fa-circle-check" id="admin-toast-icon"></i>
+        <span id="admin-toast-message">Settings saved successfully!</span>
+    </div>
+
+    <!-- Add University Modal -->
+    <div class="modal fade" id="addUnivModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0" style="border-radius:16px;">
+                <div class="modal-header border-0 bg-light p-4">
+                    <h5 class="modal-title font-outfit fw-bold text-dark"><i class="fa-solid fa-circle-plus text-danger me-2"></i>Register New University</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="add-university-form">
+                        <div class="form-group mb-3">
+                            <label class="form-label font-bold text-muted small" for="modal-univ-id">University ID (lowercase alphanumeric e.g., 'kbcnmu', 'parul')</label>
+                            <input type="text" class="form-control" id="modal-univ-id" required placeholder="e.g. gcet" style="border-radius:8px;">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label font-bold text-muted small" for="modal-univ-name">Official Name</label>
+                            <input type="text" class="form-control" id="modal-univ-name" required placeholder="e.g. Galgotias College of Engineering" style="border-radius:8px;">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label font-bold text-muted small" for="modal-univ-website">Website Homepage URL</label>
+                            <input type="url" class="form-control" id="modal-univ-website" required placeholder="e.g. https://www.galgotiascolleges.edu" style="border-radius:8px;">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label font-bold text-muted small" for="modal-univ-logo">FontAwesome Logo Class</label>
+                            <input type="text" class="form-control" id="modal-univ-logo" value="fa-solid fa-graduation-cap" required placeholder="e.g. fa-solid fa-school" style="border-radius:8px;">
+                        </div>
+                        <div class="text-end mt-4">
+                            <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal" style="border-radius:8px;">Cancel</button>
+                            <button type="submit" class="btn btn-danger px-4" style="border-radius:8px;">Save University</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Announcement Modal -->
+    <div class="modal fade" id="addAnnouncementModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0" style="border-radius:16px;">
+                <div class="modal-header border-0 bg-light p-4">
+                    <h5 class="modal-title font-outfit fw-bold text-dark"><i class="fa-solid fa-bullhorn text-danger me-2"></i>Publish Announcement Alert</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="add-announcement-form">
+                        <div class="form-group mb-3">
+                            <label class="form-label font-bold text-muted small" for="modal-ann-title">Title</label>
+                            <input type="text" class="form-control" id="modal-ann-title" required placeholder="e.g. Admission Deadline Extended" style="border-radius:8px;">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label font-bold text-muted small" for="modal-ann-desc">Description Details</label>
+                            <textarea class="form-control" id="modal-ann-desc" required placeholder="Describe the announcement updates here..." rows="3" style="border-radius:8px;"></textarea>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6 form-group">
+                                <label class="form-label font-bold text-muted small" for="modal-ann-type">Category Type</label>
+                                <select class="form-select" id="modal-ann-type" style="border-radius:8px;">
+                                    <option value="General">General</option>
+                                    <option value="Academic">Academic</option>
+                                    <option value="Campaign">Campaign</option>
+                                    <option value="Placement">Placement</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="form-label font-bold text-muted small" for="modal-ann-image-url">Image URL (Optional)</label>
+                                <input type="url" class="form-control" id="modal-ann-image-url" placeholder="Paste URL..." style="border-radius:8px;">
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="form-label font-bold text-muted small">Or Upload Image File</label>
+                            <input type="file" class="form-control" id="modal-ann-file" accept="image/*" style="border-radius:8px;">
+                        </div>
+                        <div class="text-end mt-4">
+                            <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal" style="border-radius:8px;">Cancel</button>
+                            <button type="submit" class="btn btn-danger px-4" style="border-radius:8px;">Publish Alert</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS File -->
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,983 @@
+{% extends 'base.html' %}
+
+{% block title %}UniVerse AI – Smart University Assistant{% endblock %}
+
+{% block head_extra %}
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body_tag %}<body class="light-mode landing-page">{% endblock %}
+
+{% block content %}
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <div class="logo-circle bg-danger-custom text-white d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:8px;">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title fw-extrabold text-uppercase text-secondary-custom" style="letter-spacing:0.5px; font-size:16px;">UniVerse AI</span>
+                    <span class="brand-subtitle text-muted d-block" style="font-size:9px;">Smart University Portal</span>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-3">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#universities">Universities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/portal">AI Chat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <button class="theme-btn" id="theme-toggle-btn" title="Toggle Theme" style="border:none; background:transparent; font-size:18px;">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-secondary btn-sm px-3 fw-bold" id="btn-show-login">Login</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-danger-custom btn-sm px-3 fw-bold" id="btn-show-register">Register</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Hero Section -->
+    <section class="hero-section text-center position-relative overflow-hidden" id="hero" style="min-height: 90vh; padding: 120px 0 80px 0;">
+        <div class="hero-bg-overlay"></div>
+        <div class="container position-relative z-3">
+            <div class="row align-items-center justify-content-center text-center">
+                <div class="col-lg-8 text-white">
+                    <span class="badge bg-danger-custom mb-3 py-2 px-3 text-uppercase fw-bold" style="letter-spacing:1px; font-size:10px;">Centralized AI Assistant</span>
+                    <h1 class="hero-title mb-3 font-outfit" style="font-size: 56px; font-weight:900; line-height:1.15;">
+                        One AI Assistant for <span class="gradient-text" style="background: linear-gradient(135deg, #ff4d4d, #f9bc2c); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Every University</span>
+                    </h1>
+                    <p class="hero-desc mb-5 text-light opacity-90 mx-auto" style="max-width:650px; font-size: 18px;">
+                        Explore admissions, courses, fees, placements, scholarships, campus life and much more from India's top universities.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn btn-primary-custom btn-lg px-4 py-3 shadow" id="hero-btn-start">
+                            <i class="fa-solid fa-rocket me-2"></i>Get Started
+                        </button>
+                        <a href="#universities" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="fa-solid fa-search me-2"></i>Explore Universities
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating University Showcase cards -->
+            <div class="row justify-content-center mt-5 pt-4 g-4 floating-cards-row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="glass-card text-start p-3" style="animation: floatCard 4s ease-in-out infinite;">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="logo-box bg-danger-custom text-white rounded p-1.5"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <h6 class="mb-0 text-white font-outfit">IIT Bombay</h6>
+                        </div>
+                        <p class="small text-muted-light mb-0">Avg Package: <strong>₹25.8 LPA</strong></p>
+                        <p class="small text-muted-light">NIRF #1 Engineering</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="glass-card text-start p-3" style="animation: floatCard 4.5s ease-in-out infinite alternate;">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="logo-box bg-primary rounded p-1.5 text-white"><i class="fa-solid fa-building-columns"></i></div>
+                            <h6 class="mb-0 text-white font-outfit">BITS Pilani</h6>
+                        </div>
+                        <p class="small text-muted-light mb-0">Highest Package: <strong>₹60.7 LPA</strong></p>
+                        <p class="small text-muted-light">Eminence Institution</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="glass-card text-start p-3" style="animation: floatCard 5s ease-in-out infinite;">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="logo-box bg-success rounded p-1.5 text-white"><i class="fa-solid fa-school"></i></div>
+                            <h6 class="mb-0 text-white font-outfit">Parul University</h6>
+                        </div>
+                        <p class="small text-muted-light mb-0">Placement Partners: <strong>1,600+</strong></p>
+                        <p class="small text-muted-light">NAAC A++ Accredited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universities Showcase Catalog -->
+    <section class="universities-section py-5 bg-light-custom" id="universities">
+        <div class="container py-4">
+            <div class="text-center mb-5 max-w-600 mx-auto">
+                <span class="text-primary-custom fw-bold text-uppercase small-spacing">Education Central</span>
+                <h2 class="section-title mt-2 font-outfit">Explore Connected Universities</h2>
+                <p class="text-muted text-desc">Select any university to launch its custom AI portal dashboard instantly.</p>
+            </div>
+            
+            <div class="row g-4" id="universities-grid">
+                <!-- Rendered dynamically via JS fetch from /api/universities -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section py-5" id="about">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="text-primary-custom fw-bold text-uppercase small-spacing">Unified Platform</span>
+                    <h2 class="font-outfit fw-bold text-secondary-custom mb-4" style="font-size:36px;">SaaS-Grade AI Portal for Student Guidance</h2>
+                    <p class="text-muted">UniVerse AI integrates university directories, course fee structures, admission criteria, placements, and syllabus details from India's elite academic institutions into a single interface.</p>
+                    <p class="text-muted">Students can compare rankings, tuition costs, hosteling options, and use our context-aware AI assistant to receive structured answers about admissions instantly.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="icon-circle bg-danger-custom text-white d-inline-flex align-items-center justify-content-center shadow-lg" style="width: 140px; height: 140px; border-radius: 50%; font-size: 64px;">
+                        <i class="fa-solid fa-circle-nodes"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-section py-5 bg-light-custom" id="contact">
+        <div class="container py-4">
+            <div class="text-center mb-5 max-w-600 mx-auto">
+                <h2 class="font-outfit fw-bold text-secondary-custom">Connect With Us</h2>
+                <p class="text-muted">Have queries? Get in touch with our central administrative desk.</p>
+            </div>
+            <div class="row g-4 text-center justify-content-center">
+                <div class="col-md-4">
+                    <div class="feature-card p-4 h-100 bg-white shadow-sm border-0">
+                        <i class="fa-solid fa-envelope fa-2x text-danger mb-3"></i>
+                        <h5 class="fw-bold">Email Admissions</h5>
+                        <p class="text-muted small">support@universe-ai.co.in</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 h-100 bg-white shadow-sm border-0">
+                        <i class="fa-solid fa-phone fa-2x text-danger mb-3"></i>
+                        <h5 class="fw-bold">Call Helpline</h5>
+                        <p class="text-muted small">+91 1800-419-3355</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section bg-secondary-custom py-5 text-white">
+        <div class="container text-center">
+            <h4 class="font-outfit fw-bold text-uppercase mb-3">UniVerse AI</h4>
+            <p class="text-muted-light small mb-4">India's leading centralized smart student portal. Powered by Generative AI models.</p>
+            <hr class="border-secondary my-4">
+            <p class="mb-0 small text-muted-light">&copy; 2026 UniVerse AI. All Rights Reserved. Helpdesk Powered by Google Gemini.</p>
+        </div>
+    </footer>
+
+    <!-- Premium Login Gate Overlay Modal -->
+    <div class="modal-overlay hidden" id="login-modal">
+        <div class="login-container-card position-relative">
+            <button class="btn-close-modal" id="btn-close-login" title="Close Panel" style="position:absolute; right:20px; top:20px; background:none; border:none; color:var(--text-muted); font-size:18px;"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="login-brand-header text-center mb-4">
+                <div class="login-logo-circle mb-3 mx-auto d-flex align-items-center justify-content-center bg-danger-custom text-white" style="width:50px; height:50px; border-radius:50%;">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <h3 class="login-brand-title text-secondary-custom font-outfit fw-bold">Sign In</h3>
+                <p class="login-brand-subtitle text-muted mb-0 small">Enter enrollment or student details to enter portal</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="login-form-group mb-3">
+                    <label for="login-email" class="login-label">Email / Enrollment ID</label>
+                    <div class="login-input-wrapper">
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <input type="text" id="login-email" required placeholder="e.g. guest@univ.ac.in">
+                    </div>
+                </div>
+                <div class="login-form-group mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label for="login-password" class="login-label">Password</label>
+                        <a href="#" class="forgot-pwd-link small text-decoration-none" id="link-forgot-pwd">Forgot Password?</a>
+                    </div>
+                    <div class="login-input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-checkbox mb-0">
+                        <input type="checkbox" id="login-remember">
+                        <label for="login-remember" class="text-muted small">Remember session</label>
+                    </div>
+                </div>
+                <button type="submit" class="modal-submit-btn py-2.5">Sign In to Dashboard</button>
+            </form>
+            
+            <div class="divider-or my-3 text-center">
+                <span>OR SIGN IN WITH</span>
+            </div>
+            
+            <div class="d-flex gap-2 mb-2">
+                <button class="social-login-btn w-50" type="button" onclick="alert('Google authentication simulated.')">
+                    <i class="fa-brands fa-google text-danger"></i> Google
+                </button>
+                <button class="social-login-btn w-50" type="button" onclick="alert('Microsoft authentication simulated.')">
+                    <i class="fa-brands fa-microsoft text-primary"></i> Microsoft
+                </button>
+            </div>
+            
+            <p class="text-center small text-muted mt-3 mb-0">Don't have an account? <a href="#" id="link-show-register" class="text-danger-custom font-bold">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Premium Registration Gate Overlay Modal -->
+    <div class="modal-overlay hidden" id="register-modal">
+        <div class="login-container-card position-relative" style="max-width: 550px; overflow-y: auto; max-height: 90vh;">
+            <button class="btn-close-modal" id="btn-close-register" title="Close Panel" style="position:absolute; right:20px; top:20px; background:none; border:none; color:var(--text-muted); font-size:18px;"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="login-brand-header text-center mb-4">
+                <div class="login-logo-circle mb-3 mx-auto d-flex align-items-center justify-content-center bg-danger-custom text-white" style="width:50px; height:50px; border-radius:50%;">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <h3 class="login-brand-title text-secondary-custom font-outfit fw-bold">Create Account</h3>
+                <p class="login-brand-subtitle text-muted mb-0 small">Explore admissions and courses in your dashboard</p>
+            </div>
+            
+            <form id="register-form">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="reg-fullname" class="login-label">Full Name</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-regular fa-user input-icon"></i>
+                            <input type="text" id="reg-fullname" placeholder="e.g. Ramesh Kumar">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-email" class="login-label">Email Address</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <input type="email" id="reg-email" placeholder="e.g. ramesh@gmail.com">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-phone" class="login-label">Phone Number</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-phone input-icon"></i>
+                            <input type="text" id="reg-phone" placeholder="e.g. +91 9999912345">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-qualification" class="login-label">Qualification</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-graduation-cap input-icon"></i>
+                            <input type="text" id="reg-qualification" placeholder="e.g. Class 12, B.Sc">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="reg-country" class="login-label">Country</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-globe input-icon"></i>
+                            <input type="text" id="reg-country" placeholder="India">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="reg-state" class="login-label">State</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-map-location-dot input-icon"></i>
+                            <input type="text" id="reg-state" placeholder="Gujarat">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="reg-city" class="login-label">City</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-city input-icon"></i>
+                            <input type="text" id="reg-city" placeholder="Vadodara">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-status" class="login-label">Student Status</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-circle-user input-icon"></i>
+                            <select id="reg-status" class="form-select border-0 bg-transparent text-secondary" style="padding-left:38px;">
+                                <option value="New Student">New Student</option>
+                                <option value="Current Student">Current Student</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-course" class="login-label">Preferred Course</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-book-open input-icon"></i>
+                            <input type="text" id="reg-course" placeholder="e.g. B.Tech Computer Science">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="reg-university" class="login-label">Preferred University</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-building-columns input-icon"></i>
+                            <select id="reg-university" class="form-select border-0 bg-transparent text-secondary" style="padding-left:38px; height: 38px;">
+                                <option value="parul">Parul University</option>
+                                <option value="iitb">IIT Bombay</option>
+                                <option value="iitd">IIT Delhi</option>
+                                <option value="iitm">IIT Madras</option>
+                                <option value="iitk">IIT Kanpur</option>
+                                <option value="iitkgp">IIT Kharagpur</option>
+                                <option value="nitt">NIT Trichy</option>
+                                <option value="nits">NIT Surathkal</option>
+                                <option value="bits">BITS Pilani</option>
+                                <option value="vit">VIT Vellore</option>
+                                <option value="srm">SRM University</option>
+                                <option value="manipal">Manipal University</option>
+                                <option value="amity">Amity University</option>
+                                <option value="lpu">LPU</option>
+                                <option value="chandigarh">Chandigarh University</option>
+                                <option value="snu">Shiv Nadar University</option>
+                                <option value="upes">UPES</option>
+                                <option value="christ">Christ University</option>
+                                <option value="symbiosis">Symbiosis</option>
+                                <option value="jain">Jain University</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="reg-role" class="login-label">System Role</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-user-shield input-icon"></i>
+                            <select id="reg-role" class="form-select border-0 bg-transparent text-secondary" style="padding-left:38px; height: 38px;">
+                                <option value="Student">Student (Default)</option>
+                                <option value="Faculty">Faculty Member</option>
+                                <option value="Admin">Administrator</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-password" class="login-label">Password</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="reg-password" placeholder="••••••••">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="reg-confirmpass" class="login-label">Confirm Password</label>
+                        <div class="login-input-wrapper">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="reg-confirmpass" placeholder="••••••••">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="modal-submit-btn py-2.5 mt-4">Create Account & Enter Portal</button>
+            </form>
+            
+            <p class="text-center small text-muted mt-3 mb-0">Already registered? <a href="#" id="link-show-login" class="text-danger-custom font-bold">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Email Verification Modal -->
+    <div class="modal-overlay hidden" id="verify-modal">
+        <div class="login-container-card position-relative text-center" style="max-width: 420px;">
+            <button class="btn-close-modal" id="btn-close-verify" title="Close Panel" style="position:absolute; right:20px; top:20px; background:none; border:none; color:var(--text-muted); font-size:18px;"><i class="fa-solid fa-xmark"></i></button>
+            <div class="login-logo-circle mb-3 mx-auto d-flex align-items-center justify-content-center bg-danger-custom text-white" style="width:50px; height:50px; border-radius:50%;">
+                <i class="fa-solid fa-envelope-circle-check"></i>
+            </div>
+            <h3 class="login-brand-title text-secondary-custom font-outfit fw-bold">Verify Email</h3>
+            <p class="text-muted small mb-4">Please enter the 6-digit OTP verification code sent to your email.</p>
+            
+            <form id="verify-form">
+                <div class="login-form-group mb-4">
+                    <div class="login-input-wrapper">
+                        <i class="fa-solid fa-key input-icon"></i>
+                        <input type="text" id="verify-code" required placeholder="e.g. 123456" class="text-center font-bold tracking-widest text-lg">
+                    </div>
+                </div>
+                <button type="submit" class="modal-submit-btn py-2.5">Verify & Activate Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal-overlay hidden" id="forgot-modal">
+        <div class="login-container-card position-relative text-center" style="max-width: 420px;">
+            <button class="btn-close-modal" id="btn-close-forgot" title="Close Panel" style="position:absolute; right:20px; top:20px; background:none; border:none; color:var(--text-muted); font-size:18px;"><i class="fa-solid fa-xmark"></i></button>
+            <div class="login-logo-circle mb-3 mx-auto d-flex align-items-center justify-content-center bg-danger-custom text-white" style="width:50px; height:50px; border-radius:50%;">
+                <i class="fa-solid fa-key"></i>
+            </div>
+            <h3 class="login-brand-title text-secondary-custom font-outfit fw-bold">Forgot Password</h3>
+            <p class="text-muted small mb-4">Enter your registered email address to receive a recovery code.</p>
+            
+            <form id="forgot-form">
+                <div class="login-form-group mb-4">
+                    <div class="login-input-wrapper">
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                        <input type="email" id="forgot-email" required placeholder="e.g. name@domain.com">
+                    </div>
+                </div>
+                <button type="submit" class="modal-submit-btn py-2.5">Send Verification Code</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div class="modal-overlay hidden" id="reset-modal">
+        <div class="login-container-card position-relative text-center" style="max-width: 420px;">
+            <button class="btn-close-modal" id="btn-close-reset" title="Close Panel" style="position:absolute; right:20px; top:20px; background:none; border:none; color:var(--text-muted); font-size:18px;"><i class="fa-solid fa-xmark"></i></button>
+            <div class="login-logo-circle mb-3 mx-auto d-flex align-items-center justify-content-center bg-danger-custom text-white" style="width:50px; height:50px; border-radius:50%;">
+                <i class="fa-solid fa-lock-open"></i>
+            </div>
+            <h3 class="login-brand-title text-secondary-custom font-outfit fw-bold">Reset Password</h3>
+            <p class="text-muted small mb-4">Verify the OTP code received and set a secure new password.</p>
+            
+            <form id="reset-form">
+                <div class="login-form-group mb-3">
+                    <label class="login-label">OTP Verification Code</label>
+                    <div class="login-input-wrapper">
+                        <i class="fa-solid fa-key input-icon"></i>
+                        <input type="text" id="reset-code" required placeholder="e.g. 123456" class="text-center font-bold tracking-wider">
+                    </div>
+                </div>
+                <div class="login-form-group mb-4">
+                    <label class="login-label">New Password</label>
+                    <div class="login-input-wrapper">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="reset-password-val" required placeholder="••••••••">
+                    </div>
+                </div>
+                <button type="submit" class="modal-submit-btn py-2.5">Reset & Save Password</button>
+            </form>
+        </div>
+    </div>
+    <!-- Notification Toast -->
+    <div class="toast hidden" id="toast" style="position:fixed; bottom:20px; right:20px; z-index:9999;">
+        <i class="fa-solid fa-circle-check" id="toast-icon"></i>
+        <span id="toast-message">Action processed successfully!</span>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Landing Page JS logic -->
+    <script>
+        const getCookie = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        };
+
+        // Safe Storage wrapper to handle sandboxed/restricted iframe policies globally
+        const safeGet = (key) => {
+            try {
+                const val = localStorage.getItem(key) || sessionStorage.getItem(key);
+                if (val) return val;
+            } catch (e) {}
+            if (key === 'universe_jwt_token') {
+                const tokenCookie = getCookie('remember_token');
+                if (tokenCookie) return tokenCookie;
+            }
+            if (window.__storage_fallback) {
+                return window.__storage_fallback[key] || null;
+            }
+            return null;
+        };
+        const safeSet = (key, val, persist = false) => {
+            try {
+                const storage = persist ? localStorage : sessionStorage;
+                storage.setItem(key, val);
+            } catch (e) {
+                if (!window.__storage_fallback) window.__storage_fallback = {};
+                window.__storage_fallback[key] = val;
+            }
+        };
+        const safeRemove = (key) => {
+            try {
+                localStorage.removeItem(key);
+                sessionStorage.removeItem(key);
+            } catch (e) {}
+            if (window.__storage_fallback) {
+                delete window.__storage_fallback[key];
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Dynamically populate registration universities dropdown from SQL backend
+            const loadRegUniversities = async () => {
+                try {
+                    const response = await fetch('/api/universities');
+                    const data = await response.json();
+                    const regUnivSelect = document.getElementById('reg-university');
+                    if (regUnivSelect) {
+                        regUnivSelect.innerHTML = '';
+                        data.forEach(univ => {
+                            const option = document.createElement('option');
+                            option.value = univ.id;
+                            option.textContent = univ.name;
+                            regUnivSelect.appendChild(option);
+                        });
+                    }
+                } catch (err) {
+                    console.error('Failed to fetch universities list:', err);
+                }
+            };
+            loadRegUniversities();
+
+            // Theme setup
+            const themeBtn = document.getElementById('theme-toggle-btn');
+            let savedTheme = 'light-mode';
+            try {
+                savedTheme = localStorage.getItem('theme') || 'light-mode';
+            } catch (e) {}
+            document.body.className = savedTheme;
+            updateThemeToggleIcon(savedTheme);
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    if (document.body.classList.contains('light-mode')) {
+                        document.body.classList.remove('light-mode');
+                        document.body.classList.add('dark-mode');
+                        try { localStorage.setItem('theme', 'dark-mode'); } catch (e) {}
+                        updateThemeToggleIcon('dark-mode');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        document.body.classList.add('light-mode');
+                        try { localStorage.setItem('theme', 'light-mode'); } catch (e) {}
+                        updateThemeToggleIcon('light-mode');
+                    }
+                });
+            }
+
+            function updateThemeToggleIcon(theme) {
+                if (!themeBtn) return;
+                const icon = themeBtn.querySelector('i');
+                if (theme === 'dark-mode') {
+                    icon.className = 'fa-solid fa-sun';
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                }
+            }
+
+            // Modal Toggles
+            const loginModal = document.getElementById('login-modal');
+            const registerModal = document.getElementById('register-modal');
+            const verifyModal = document.getElementById('verify-modal');
+            const forgotModal = document.getElementById('forgot-modal');
+            const resetModal = document.getElementById('reset-modal');
+            
+            const btnShowLogin = document.getElementById('btn-show-login');
+            const btnShowRegister = document.getElementById('btn-show-register');
+            const heroBtnStart = document.getElementById('hero-btn-start');
+            
+            const btnCloseLogin = document.getElementById('btn-close-login');
+            const btnCloseRegister = document.getElementById('btn-close-register');
+            const btnCloseVerify = document.getElementById('btn-close-verify');
+            const btnCloseForgot = document.getElementById('btn-close-forgot');
+            const btnCloseReset = document.getElementById('btn-close-reset');
+            
+            const linkShowRegister = document.getElementById('link-show-register');
+            const linkShowLogin = document.getElementById('link-show-login');
+            const linkForgotPwd = document.getElementById('link-forgot-pwd');
+
+            // Track active verification email context
+            let activeVerificationEmail = '';
+
+            if (btnShowLogin) {
+                btnShowLogin.addEventListener('click', () => {
+                    loginModal.classList.remove('hidden');
+                    registerModal.classList.add('hidden');
+                });
+            }
+            if (btnShowRegister) {
+                btnShowRegister.addEventListener('click', () => {
+                    registerModal.classList.remove('hidden');
+                    loginModal.classList.add('hidden');
+                });
+            }
+            if (heroBtnStart) {
+                heroBtnStart.addEventListener('click', () => {
+                    registerModal.classList.remove('hidden');
+                    loginModal.classList.add('hidden');
+                });
+            }
+
+            if (btnCloseLogin) btnCloseLogin.addEventListener('click', () => loginModal.classList.add('hidden'));
+            if (btnCloseRegister) btnCloseRegister.addEventListener('click', () => registerModal.classList.add('hidden'));
+            if (btnCloseVerify) btnCloseVerify.addEventListener('click', () => verifyModal.classList.add('hidden'));
+            if (btnCloseForgot) btnCloseForgot.addEventListener('click', () => forgotModal.classList.add('hidden'));
+            if (btnCloseReset) btnCloseReset.addEventListener('click', () => resetModal.classList.add('hidden'));
+
+            if (linkShowRegister) {
+                linkShowRegister.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    registerModal.classList.remove('hidden');
+                    loginModal.classList.add('hidden');
+                });
+            }
+            if (linkShowLogin) {
+                linkShowLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginModal.classList.remove('hidden');
+                    registerModal.classList.add('hidden');
+                });
+            }
+            if (linkForgotPwd) {
+                linkForgotPwd.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    forgotModal.classList.remove('hidden');
+                    loginModal.classList.add('hidden');
+                });
+            }
+
+            // Fetch and render connected universities
+            fetchUniversitiesList();
+
+            // Form Submit Actions
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('login-email').value.trim();
+                    const password = document.getElementById('login-password').value;
+                    const remember = document.getElementById('login-remember').checked;
+                    
+                    if (!email) { showToast('Please enter your Email or Enrollment ID.', 'error'); return; }
+                    if (!password) { showToast('Please enter your password.', 'error'); return; }
+                    
+                    if (email.includes('@')) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(email)) { showToast('Please enter a valid email address.', 'error'); return; }
+                    }
+                    if (password.length < 6) { showToast('Password must be at least 6 characters long.', 'error'); return; }
+                    
+                    const submitBtn = loginForm.querySelector('button[type="submit"]');
+                    const origBtnText = submitBtn.innerHTML;
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Signing In...';
+                    
+                    try {
+                        const response = await fetch('/api/login', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ email, password, remember })
+                        });
+                        const result = await response.json();
+                        
+                        if (response.ok && result.success) {
+                            showToast(result.message, 'success');
+                            
+                            // Remember Login storage selector safely
+                            safeSet('universe_jwt_token', result.token, remember);
+                            safeSet('pu_student_user', JSON.stringify(result.user), remember);
+                            try { localStorage.setItem('selected_university_id', result.user.preferred_university || 'parul'); } catch (err) {}
+                            
+                            setTimeout(() => {
+                                window.location.href = `/dashboard?token=${encodeURIComponent(result.token)}`;
+                            }, 800);
+                        } else if (result.needs_verification) {
+                            showToast(result.message, 'error');
+                            activeVerificationEmail = result.email;
+                            alert(`[SIMULATED MAIL SERVER]\nOTP Verification Code for ${result.email} is: ${result.otp_code}`);
+                            loginModal.classList.add('hidden');
+                            verifyModal.classList.remove('hidden');
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = origBtnText;
+                        } else {
+                            showToast(result.message || 'Login failed.', 'error');
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = origBtnText;
+                        }
+                    } catch (err) {
+                        showToast('Connection failed. Verify server is running.', 'error');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = origBtnText;
+                    }
+                });
+            }
+
+            const registerForm = document.getElementById('register-form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const fullname = document.getElementById('reg-fullname').value.trim();
+                    const email = document.getElementById('reg-email').value.trim();
+                    const phone = document.getElementById('reg-phone').value.trim();
+                    const qualification = document.getElementById('reg-qualification').value.trim();
+                    const country = document.getElementById('reg-country').value.trim();
+                    const state = document.getElementById('reg-state').value.trim();
+                    const city = document.getElementById('reg-city').value.trim();
+                    const student_status = document.getElementById('reg-status').value;
+                    const preferred_course = document.getElementById('reg-course').value.trim();
+                    const preferred_univ = document.getElementById('reg-university').value;
+                    const role = document.getElementById('reg-role').value;
+                    const password = document.getElementById('reg-password').value;
+                    const confirmpass = document.getElementById('reg-confirmpass').value;
+
+                    if (!fullname) { showToast('Please enter your Full Name.', 'error'); return; }
+                    if (!email) { showToast('Please enter your Email Address.', 'error'); return; }
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) { showToast('Please enter a valid email address.', 'error'); return; }
+                    if (!phone) { showToast('Please enter your Phone Number.', 'error'); return; }
+                    if (!qualification) { showToast('Please enter your Qualification.', 'error'); return; }
+                    if (!country) { showToast('Please enter your Country.', 'error'); return; }
+                    if (!state) { showToast('Please enter your State.', 'error'); return; }
+                    if (!city) { showToast('Please enter your City.', 'error'); return; }
+                    if (!preferred_course) { showToast('Please enter your Preferred Course.', 'error'); return; }
+                    if (!password) { showToast('Please enter your Password.', 'error'); return; }
+                    if (password.length < 6) { showToast('Password must be at least 6 characters long.', 'error'); return; }
+                    if (!confirmpass) { showToast('Please confirm your Password.', 'error'); return; }
+
+                    if (password !== confirmpass) {
+                        showToast('Passwords do not match.', 'error');
+                        return;
+                    }
+
+                    const submitBtn = registerForm.querySelector('button[type="submit"]');
+                    const origBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Registering...';
+
+                    try {
+                        const response = await fetch('/api/register', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                fullname,
+                                email,
+                                phone,
+                                qualification,
+                                country,
+                                state,
+                                city,
+                                student_status,
+                                preferred_course,
+                                preferred_university: preferred_univ,
+                                role,
+                                password
+                            })
+                        });
+                        const result = await response.json();
+                        if (response.ok && result.success) {
+                            showToast(result.message, 'success');
+                            activeVerificationEmail = email;
+                            
+                            // Display OTP Code alert for simulator
+                            alert(`[SIMULATED MAIL SERVER]\nOTP Verification Code sent to ${email} is: ${result.otp_code}`);
+                            
+                            registerModal.classList.add('hidden');
+                            verifyModal.classList.remove('hidden');
+                        } else {
+                            showToast(result.message || 'Registration failed.', 'error');
+                        }
+                    } catch (err) {
+                        showToast('Connection failed.', 'error');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = origBtnText;
+                    }
+                });
+            }
+
+            // Email Verification submission
+            const verifyForm = document.getElementById('verify-form');
+            if (verifyForm) {
+                verifyForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const code = document.getElementById('verify-code').value.trim();
+                    if (!code) { showToast('Please enter verification code.', 'error'); return; }
+                    
+                    const submitBtn = verifyForm.querySelector('button[type="submit"]');
+                    const origBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Verifying...';
+                    
+                    try {
+                        const response = await fetch('/api/verify-email', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ email: activeVerificationEmail, code })
+                        });
+                        const result = await response.json();
+                        if (response.ok && result.success) {
+                            showToast(result.message, 'success');
+                            verifyModal.classList.add('hidden');
+                            loginModal.classList.remove('hidden');
+                        } else {
+                            showToast(result.message || 'Invalid code.', 'error');
+                        }
+                    } catch (err) {
+                        showToast('Verification request failed.', 'error');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = origBtnText;
+                    }
+                });
+            }
+
+            // Forgot Password Request
+            const forgotForm = document.getElementById('forgot-form');
+            if (forgotForm) {
+                forgotForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('forgot-email').value.trim();
+                    if (!email) { showToast('Please enter your email address.', 'error'); return; }
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) { showToast('Please enter a valid email address.', 'error'); return; }
+                    
+                    const submitBtn = forgotForm.querySelector('button[type="submit"]');
+                    const origBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Sending...';
+                    
+                    try {
+                        const response = await fetch('/api/forgot-password', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ email })
+                        });
+                        const result = await response.json();
+                        if (response.ok && result.success) {
+                            showToast(result.message, 'success');
+                            activeVerificationEmail = email;
+                            
+                            alert(`[SIMULATED MAIL SERVER]\nPassword Reset OTP sent to ${email} is: ${result.otp_code}`);
+                            
+                            forgotModal.classList.add('hidden');
+                            resetModal.classList.remove('hidden');
+                        } else {
+                            showToast(result.message || 'Forgot request failed.', 'error');
+                        }
+                    } catch (err) {
+                        showToast('Connection error.', 'error');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = origBtnText;
+                    }
+                });
+            }
+
+            // Reset Password Submission
+            const resetForm = document.getElementById('reset-form');
+            if (resetForm) {
+                resetForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const code = document.getElementById('reset-code').value.trim();
+                    const new_password = document.getElementById('reset-password-val').value;
+                    
+                    if (!code) { showToast('Please enter verification code.', 'error'); return; }
+                    if (!new_password) { showToast('Please enter a new password.', 'error'); return; }
+                    if (new_password.length < 6) { showToast('Password must be at least 6 characters long.', 'error'); return; }
+                    
+                    const submitBtn = resetForm.querySelector('button[type="submit"]');
+                    const origBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> Saving...';
+                    
+                    try {
+                        const response = await fetch('/api/reset-password', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ email: activeVerificationEmail, code, new_password })
+                        });
+                        const result = await response.json();
+                        if (response.ok && result.success) {
+                            showToast(result.message, 'success');
+                            resetModal.classList.add('hidden');
+                            loginModal.classList.remove('hidden');
+                        } else {
+                            showToast(result.message || 'Reset failed.', 'error');
+                        }
+                    } catch (err) {
+                        showToast('Connection error.', 'error');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = origBtnText;
+                    }
+                });
+            }
+        });
+
+        async function fetchUniversitiesList() {
+            const grid = document.getElementById('universities-grid');
+            if (!grid) return;
+            grid.innerHTML = '<div class="col-12 text-center text-muted"><i class="fa-solid fa-spinner fa-spin"></i> Loading catalog...</div>';
+            
+            try {
+                const response = await fetch('/api/universities');
+                const list = await response.json();
+                
+                grid.innerHTML = '';
+                list.forEach(univ => {
+                    const card = document.createElement('div');
+                    card.className = 'col-lg-4 col-md-6 col-sm-12';
+                    card.innerHTML = `
+                        <div class="feature-card h-100 p-4 border-0 shadow-sm bg-white hover-up position-relative overflow-hidden" style="border-radius:16px; transition:all 0.3s ease;">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="univ-logo-circle bg-danger-custom text-white d-flex align-items-center justify-content-center" style="width:48px; height:48px; border-radius:12px; font-size:20px;">
+                                    <i class="${univ.logo || 'fa-solid fa-graduation-cap'}"></i>
+                                </div>
+                                <div class="univ-info-box">
+                                    <h5 class="fw-bold mb-0 font-outfit text-secondary-custom" style="font-size:15px;">${univ.name}</h5>
+                                    <span class="text-muted small" style="font-size:10px;"><i class="fa-solid fa-map-marker-alt me-1 text-danger"></i>${univ.location.split(',')[0]}</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="badge bg-light text-dark border" style="font-size: 9px; font-weight: 600; padding: 5px 8px;"><i class="fa-solid fa-ranking-star text-warning me-1"></i>Ranking: ${univ.ranking}</span>
+                                <span class="badge bg-light text-success border" style="font-size: 9px; font-weight: 600; padding: 5px 8px;"><i class="fa-solid fa-award text-success me-1"></i>Accreditation: ${univ.accreditation}</span>
+                            </div>
+                            <p class="text-muted small mb-4">Explore course syllabus, annual fee sheets, and schedule direct admissions parameters via custom AI chatbot guidance.</p>
+                            <button class="btn btn-outline-danger btn-sm w-100 fw-bold py-2" onclick="enterUniversityPortal('${univ.id}')">
+                                <i class="fa-solid fa-comments me-2"></i>Enter Chatbot Portal
+                            </button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (err) {
+                grid.innerHTML = '<div class="col-12 text-center text-danger">Failed to fetch universities. Please reload.</div>';
+            }
+        }
+
+        window.enterUniversityPortal = function(id) {
+            safeSet('selected_university_id', id, true);
+            // Check if logged in, otherwise show register/login
+            const user = safeGet('pu_student_user');
+            if (user) {
+                window.location.href = '/portal';
+            } else {
+                document.getElementById('register-modal').classList.remove('hidden');
+                document.getElementById('reg-university').value = id;
+            }
+        };
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            if (!toast) return;
+
+            toastMessage.textContent = message;
+            if (type === 'success') {
+                toastIcon.className = 'fa-solid fa-circle-check text-success';
+                toast.style.borderLeft = '4px solid var(--success)';
+            } else {
+                toastIcon.className = 'fa-solid fa-triangle-exclamation text-danger';
+                toast.style.borderLeft = '4px solid var(--danger)';
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+    </script>
+{% endblock %}

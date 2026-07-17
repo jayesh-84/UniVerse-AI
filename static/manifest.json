@@ -1,0 +1,22 @@
+{
+  "name": "Parul University AI Helpdesk",
+  "short_name": "PU Helpdesk",
+  "description": "AI-powered student assistant for admissions, tuition fees, course curriculum, and examinations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#E4002B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/df/MS_Dhoni_at_LPU.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/df/MS_Dhoni_at_LPU.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}

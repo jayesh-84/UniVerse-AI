@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Test Notice",
+    "desc": "Verification test notice details",
+    "type": "General",
+    "image": ""
+  },
+  {
+    "title": "Test Notice",
+    "desc": "Verification test notice details",
+    "type": "General",
+    "image": ""
+  },
+  {
+    "title": "Test Notice",
+    "desc": "Verification test notice details",
+    "type": "General",
+    "image": ""
+  },
+  {
+    "title": "Mission Possible 2026",
+    "type": "Campaign",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/df/MS_Dhoni_at_LPU.jpg",
+    "desc": "MS Dhoni invites young minds to join Parul University to explore career pathways."
+  },
+  {
+    "title": "Mid-Term Examinations Schedule",
+    "type": "Academic",
+    "image": "",
+    "desc": "Mid-Term exams commence on October 20, 2026. Hall tickets release next week."
+  }
+]
