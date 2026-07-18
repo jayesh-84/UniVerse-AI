@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="screenshots/banner.jpg" width="100%">
+</p>
+
 # UniVerse AI Student Helpdesk Portal
 
 A highly secure, customizable, and production-ready AI-powered Student Helpdesk Portal application. This system is designed to allow colleges, departments, or universities to immediately deploy an interactive assistant that answers common student inquiries (admission criteria, tuition fees, exam /hedules, and course syllabus) while supporting robust administrative CRUD dashboards.
@@ -39,42 +43,41 @@ The backend is built on **Flask** and features a **Dual-Engine Response Pipeline
 ```
 ## Screenshots
 
-### Home
+### 🏠 Home
 ![Home](screenshots/home.png)
 
-### Dashboard
+### 📊 Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
-### AI Chatbot
-![AI Chatbot](screenshots/ai-chatbot.png)
+### 🏫 University
+![University](screenshots/university.png)
 
-### University Information
-![University Information](screenshots/university.png)
-
-### University Comparison
-![University Comparison](screenshots/ai-comparison.png)
-
-### AI Career Roadmap
-![AI Career Roadmap](screenshots/ai-career-roadmap.png)
-
-### Scholarship Finder
+### 🎓 Scholarship Finder
 ![Scholarship Finder](screenshots/scholarship-finder.png)
 
-### AI Resume Builder
-![AI Resume Builder](screenshots/ai-resume-builder.png)
+### 🤖 AI Chatbot
+![AI Chatbot](screenshots/ai-chatbot.png)
 
-### AI Mock Interview
-![AI Mock Interview](screenshots/ai-mock-interview.png)
+### ⚖️ AI Comparison
+![AI Comparison](screenshots/ai-comparison.png)
 
-### Application Tracker
+### 🗺️ Career Roadmap
+![Career Roadmap](screenshots/ai-career-roadmap.png)
+
+### 📄 Resume Builder
+![Resume Builder](screenshots/ai-resume-builder.png)
+
+### 🎤 Mock Interview
+![Mock Interview](screenshots/ai-mock-interview.png)
+
+### 📌 Application Tracker
 ![Application Tracker](screenshots/application-tracker.png)
 
-### Notification Center
-![Notification Center](screenshots/notifications.png)
+### 🔔 Notifications
+![Notifications](screenshots/notifications.png)
 
-### User Profile
-![User Profile](screenshots/profile.png)
-
+### 👤 Profile
+![Profile](screenshots/profile.png)
 
 ---
 
@@ -84,10 +87,6 @@ Please refer to the following documents for deployment instructions:
 1. **Local Installation**: Set up dependencies and start the app locally by following the guides in [docs/DEPLOYMENT_GUIDE.md](file:///C:/Users/SARVADNYA/Desktop/Universe%20AI/docs/DEPLOYMENT_GUIDE.md).
 2. **API Definition**: Check JSON payload structures and parameters in [docs/API_DOCUMENTATION.md](file:///C:/Users/SARVADNYA/Desktop/Universe%20AI/docs/API_DOCUMENTATION.md).
 3. **Environment Setup**: Copy `.env.example` to `.env` and fill out keys.
-
-<p align="center">
-<img src="banner.jpg" width="100%">
-</p>
 
 # 🎓 UniVerse AI
 
