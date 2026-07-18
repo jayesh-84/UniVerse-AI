@@ -19,6 +19,66 @@ An AI-powered Smart University Decision Platform that helps students explore uni
 - 🔐 JWT Authentication
 - 📊 Real-time University Data Integration
 
+## 📷 Screenshots
+
+### 🏠 Home
+![Home](screenshots/home.png)
+
+---
+
+### 📊 Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+### 🤖 AI Chatbot
+![AI Chatbot](screenshots/ai-chatbot.png)
+
+---
+
+### 🎓 University Information
+![University Information](screenshots/university.png)
+
+---
+
+### ⚖️ University Comparison
+![University Comparison](screenshots/ai-comparison.png)
+
+---
+
+### 🎯 AI Career Roadmap
+![AI Career Roadmap](screenshots/ai-career-roadmap.png)
+
+---
+
+### 💰 Scholarship Finder
+![Scholarship Finder](screenshots/scholarship-finder.png)
+
+---
+
+### 📄 AI Resume Builder
+![AI Resume Builder](screenshots/ai-resume-builder.png)
+
+---
+
+### 🎤 AI Mock Interview
+![AI Mock Interview](screenshots/ai-mock-interview.png)
+
+---
+
+### 📌 Application Tracker
+![Application Tracker](screenshots/application-tracker.png)
+
+---
+
+### 🔔 Notification Center
+![Notification Center](screenshots/notifications.png)
+
+---
+
+### 👤 User Profile
+![User Profile](screenshots/profile.png)
+
 ## 🛠️ Tech Stack
 
 - Python
