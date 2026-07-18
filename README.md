@@ -4,6 +4,18 @@
 
 # UniVerse AI Student Helpdesk Portal
 
+# 🎓 UniVerse AI Student Helpdesk Portal
+
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web_Framework-black?style=for-the-badge&logo=flask)
+![Gemini AI](https://img.shields.io/badge/Gemini-AI-orange?style=for-the-badge&logo=google)
+![SQLite](https://img.shields.io/badge/SQLite-Database-blue?style=for-the-badge&logo=sqlite)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+</p>
+
 A highly secure, customizable, and production-ready AI-powered Student Helpdesk Portal application. This system is designed to allow colleges, departments, or universities to immediately deploy an interactive assistant that answers common student inquiries (admission criteria, tuition fees, exam /hedules, and course syllabus) while supporting robust administrative CRUD dashboards.
 
 The backend is built on **Flask** and features a **Dual-Engine Response Pipeline**:
