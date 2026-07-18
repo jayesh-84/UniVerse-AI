@@ -1,6 +1,6 @@
 # UniVerse AI Student Helpdesk Portal
 
-A highly secure, customizable, and production-ready AI-powered Student Helpdesk Portal application. This system is designed to allow colleges, departments, or universities to immediately deploy an interactive assistant that answers common student inquiries (admission criteria, tuition fees, exam schedules, and course syllabus) while supporting robust administrative CRUD dashboards.
+A highly secure, customizable, and production-ready AI-powered Student Helpdesk Portal application. This system is designed to allow colleges, departments, or universities to immediately deploy an interactive assistant that answers common student inquiries (admission criteria, tuition fees, exam /hedules, and course syllabus) while supporting robust administrative CRUD dashboards.
 
 The backend is built on **Flask** and features a **Dual-Engine Response Pipeline**:
 1. **Local NLP Mode (Offline)**: Matches student queries against a modular university facts database to return structured data instantly.
@@ -37,6 +37,44 @@ The backend is built on **Flask** and features a **Dual-Engine Response Pipeline
 ├── templates/                  # Jinja2 HTML layout pages (index.html, portal.html)
 └── requirements.txt            # System dependencies
 ```
+## Screenshots
+
+### Home
+![Home](screenshots/home.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### AI Chatbot
+![AI Chatbot](screenshots/ai-chatbot.png)
+
+### University Information
+![University Information](screenshots/university.png)
+
+### University Comparison
+![University Comparison](screenshots/ai-comparison.png)
+
+### AI Career Roadmap
+![AI Career Roadmap](screenshots/ai-career-roadmap.png)
+
+### Scholarship Finder
+![Scholarship Finder](screenshots/scholarship-finder.png)
+
+### AI Resume Builder
+![AI Resume Builder](screenshots/ai-resume-builder.png)
+
+### AI Mock Interview
+![AI Mock Interview](screenshots/ai-mock-interview.png)
+
+### Application Tracker
+![Application Tracker](screenshots/application-tracker.png)
+
+### Notification Center
+![Notification Center](screenshots/notifications.png)
+
+### User Profile
+![User Profile](screenshots/profile.png)
+
 
 ---
 

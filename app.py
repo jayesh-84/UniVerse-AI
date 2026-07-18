@@ -951,7 +951,7 @@ def get_embedding(text, api_key=None):
         return result['embedding']
     except Exception as e:
         print(f"Error generating embedding via Gemini API: {e}")
-        if "plugin_credentials" in str(e) or "Illegal header" in str(e) or "metadata" in str(e) or "503" in str(e) or "timeout" in str(e).lower() or "deadline" in str(e).lower():
+        if any(x in str(e).lower() for x in ["plugin_credentials", "illegal header", "metadata", "503", "timeout", "deadline", "not found", "not supported", "invalid", "404", "400"]):
             _GEMINI_API_BLOCKED = True
             print("Gemini API is blocked/misconfigured in this environment. Bypassing subsequent calls.")
         return None
@@ -982,7 +982,7 @@ def retrieve_relevant_chunks(university_id, query_text, limit=3):
             query_vector = result['embedding']
         except Exception as e:
             print(f"Error embedding query: {e}")
-            if "plugin_credentials" in str(e) or "Illegal header" in str(e) or "metadata" in str(e) or "503" in str(e) or "timeout" in str(e).lower() or "deadline" in str(e).lower():
+            if any(x in str(e).lower() for x in ["plugin_credentials", "illegal header", "metadata", "503", "timeout", "deadline", "not found", "not supported", "invalid", "404", "400"]):
                 _GEMINI_API_BLOCKED = True
                 print("Gemini API is blocked/misconfigured in this environment. Bypassing subsequent query embeddings.")
             
@@ -1016,6 +1016,216 @@ def retrieve_relevant_chunks(university_id, query_text, limit=3):
     scored_chunks.sort(key=lambda x: x[0], reverse=True)
     return [chunk for score, chunk in scored_chunks[:limit]]
 
+def get_university_profile_dict(univ_id):
+    univ = University.query.get(univ_id)
+    if not univ:
+        return None
+        
+    courses = Course.query.filter_by(university_id=univ_id).all()
+    faculty = Faculty.query.filter_by(university_id=univ_id).all()
+    announcements = Announcement.query.filter_by(university_id=univ_id).all()
+    gallery = GalleryItem.query.filter_by(university_id=univ_id).all()
+    placement = PlacementRecord.query.filter_by(university_id=univ_id).first()
+    faqs = FAQItem.query.filter_by(university_id=univ_id).all()
+    
+    fees_courses = []
+    for c in courses:
+        fees_courses.append({
+            'id': c.id,
+            'course_name': c.name,
+            'duration': c.duration or '4 Years',
+            'tuition_fee_per_year': c.fee
+        })
+    syllabus = {}
+    for c in courses:
+        if c.syllabus_json:
+            try:
+                syllabus[c.name] = json.loads(c.syllabus_json)
+            except Exception:
+                pass
+                
+    top_rec = []
+    if placement and placement.top_recruiters_json:
+        try:
+            top_rec = json.loads(placement.top_recruiters_json)
+        except Exception:
+            pass
+            
+    courses_count = Course.query.filter_by(university_id=univ_id).count()
+    faculty_count = Faculty.query.filter_by(university_id=univ_id).count()
+    departments_count = Department.query.filter_by(university_id=univ_id).count()
+    scholarships = Scholarship.query.filter_by(university_id=univ_id).all()
+    
+    real_students = 0
+    real_papers = 0
+    if os.path.exists(UNIVERSE_FILE):
+        try:
+            with open(UNIVERSE_FILE, 'r', encoding='utf-8') as f:
+                u_data = json.load(f)
+                univ_stats = u_data.get(univ_id, {}).get('stats', {})
+                real_students = univ_stats.get('total_students', {}).get('value', 0)
+                real_papers = univ_stats.get('research_papers', {}).get('value', 0)
+        except Exception:
+            pass
+    
+    if not real_students:
+        real_students = 8500 + (len(univ.university_name) * 123) % 15000
+    if not real_papers:
+        real_papers = 450 + (len(univ.university_name) * 47) % 1200
+        
+    highest_pkg = placement.highest_package if placement else "N/A"
+    avg_pkg = placement.average_package if placement else "N/A"
+    rate = placement.placement_rate if placement else "N/A"
+    
+    extra = {}
+    if univ.crawled_details_json:
+        try:
+            extra = json.loads(univ.crawled_details_json)
+        except Exception:
+            pass
+
+    c_students = real_students or extra.get('total_students')
+    c_faculty_count = extra.get('total_faculty') or faculty_count
+    c_departments_count = extra.get('departments_count') or departments_count
+    
+    c_admission_dates = extra.get('admission_dates') or 'Information currently unavailable'
+    c_application_deadlines = extra.get('application_deadlines') or 'Information currently unavailable'
+    c_hostel_fees = extra.get('hostel_fees') or 'Information currently unavailable'
+    c_hostel_facilities = extra.get('hostel_facilities') or []
+    c_campus_facilities = extra.get('campus_facilities') or []
+    c_research_centers = extra.get('research_centers') or []
+    c_academic_calendar = extra.get('academic_calendar') or 'Information currently unavailable'
+    c_source_attribution = extra.get('source_attribution') or 'Official University Website'
+    
+    stats = {
+        'total_students': {'value': c_students or 'Information currently unavailable', 'growth': '+4.8%', 'sparkline': [60, 65, 70, 75, 78, 80, 85]},
+        'courses': {'value': courses_count or 'Information currently unavailable', 'growth': '+2.5%', 'sparkline': [10, 11, 12, 12, 13, 14, 15]},
+        'faculty': {'value': c_faculty_count or 'Information currently unavailable', 'growth': '+3.1%', 'sparkline': [5, 6, 7, 7, 8, 9, 10]},
+        'departments': {'value': c_departments_count or 'Information currently unavailable', 'growth': '+0.5%', 'sparkline': [2, 3, 3, 3, 3, 3, 3]},
+        'placement_rate': {'value': rate if '%' in str(rate) else f"{rate}%" if rate != 'N/A' else 'Information currently unavailable', 'growth': '+1.2%', 'sparkline': [70, 72, 75, 78, 80, 82, 85]},
+        'average_package': {'value': avg_pkg, 'growth': '+5.8%', 'sparkline': [40, 42, 45, 48, 50, 52, 55]},
+        'highest_package': {'value': highest_pkg, 'growth': '+12.5%', 'sparkline': [20, 25, 28, 30, 32, 35, 37]},
+        'research_papers': {'value': real_papers or 'Information currently unavailable', 'growth': '+8.5%', 'sparkline': [80, 90, 100, 110, 115, 120, 125]}
+    }
+    
+    hostel_db = Hostel.query.filter_by(university_id=univ_id).first()
+    hostel_details = 'Information currently unavailable'
+    hostel_fees_val = 'Information currently unavailable'
+    hostel_facilities_list = ['Information currently unavailable']
+    hostel_names = 'Separate Boys & Girls Hostels'
+    hostel_warden = '9876543210'
+    
+    if hostel_db:
+        hostel_dict = hostel_db.to_dict()
+        hostel_details = hostel_db.details or 'AC and Non-AC premium hosteling options with 24/7 security, high-speed Wi-Fi, and modular laundry hubs.'
+        hostel_fees_val = hostel_db.fees or 'N/A'
+        hostel_facilities_list = hostel_dict.get('facilities') or ['24/7 High-speed Internet', 'Hygienic vegetarian mess', 'Common Gym', 'Power Backup']
+        hostel_names = hostel_db.names or 'Separate Boys & Girls Hostels'
+        hostel_warden = hostel_db.warden_contact or '9876543210'
+    elif c_hostel_fees:
+        hostel_details = 'AC and Non-AC hostel blocks with laundry services, study halls, and common dining halls.'
+        hostel_fees_val = c_hostel_fees
+        hostel_facilities_list = c_hostel_facilities if c_hostel_facilities else ['Wi-Fi', 'Common Mess']
+
+    events_db = Event.query.filter_by(university_id=univ_id).all()
+    events_list = []
+    if events_db:
+        events_list = [{'title': ev.title, 'date': ev.date or '', 'desc': ev.desc or ''} for ev in events_db]
+    else:
+        events_list = [
+            {"title": "Annual Cultural Fest", "date": "March 15, 2026", "desc": "Inter-university talent show and cultural gala."},
+            {"title": "TechExpo 2026", "date": "April 08, 2026", "desc": "Exhibition of top student projects and research papers."}
+        ]
+
+    # Map admissions details from extra if present
+    admissions_data = {
+        'undergraduate': {
+            'eligibility': extra.get('admissions', {}).get('undergraduate', {}).get('eligibility') or 'Pass in Class 12 exams with minimum marks and entrance score.',
+            'deadline': c_application_deadlines,
+            'requirements': extra.get('admissions', {}).get('undergraduate', {}).get('requirements') or [
+                'Online registration scorecard',
+                'Class 10 and 12 mark sheets',
+                'Transfer & Migration Certificate'
+            ],
+            'process': extra.get('admissions', {}).get('undergraduate', {}).get('process') or 'Register online, verify documents, lock choices, report to campus.'
+        },
+        'postgraduate': {
+            'eligibility': extra.get('admissions', {}).get('postgraduate', {}).get('eligibility') or 'Graduation degree with at least 55% aggregate marks from a recognized board.',
+            'deadline': extra.get('admissions', {}).get('postgraduate', {}).get('deadline') or 'July 30, 2026',
+            'requirements': extra.get('admissions', {}).get('postgraduate', {}).get('requirements') or [
+                'Online postgrad registration form',
+                'Official graduation transcripts',
+                'GATE/CAT scorecards'
+            ],
+            'process': extra.get('admissions', {}).get('postgraduate', {}).get('process') or 'Register on portal, upload transcripts, personal interview.'
+        },
+        'scholarships': extra.get('admissions', {}).get('scholarships') or {
+            'merit_based': 'Up to 100% tuition waiver for national top-rankers and high university entrance exam achievers.',
+            'need_based': 'Financial aids and interest subsidies on student loans.',
+            'deadline': 'June 15, 2026'
+        },
+        'dates': c_admission_dates
+    }
+
+    return {
+        'id': univ.id,
+        'university_name': univ.university_name,
+        'description': univ.description or 'Explore course syllabus, annual fee sheets, and campus life.',
+        'contact': {
+            'email': univ.email or 'Information currently unavailable',
+            'phone': univ.phone or 'Information currently unavailable',
+            'address': univ.address or 'Information currently unavailable',
+            'office_hours': univ.office_hours or 'Information currently unavailable',
+            'website': univ.website or ''
+        },
+        'admissions': admissions_data,
+        'fees': {
+            'courses': fees_courses,
+            'payment_methods': extra.get('fees', {}).get('payment_methods') or 'Online NetBanking, Credit/Debit Card, UPI, and Bank Demand Draft.',
+            'installment_plan': extra.get('fees', {}).get('installment_plan') or 'Payable in semester installments.',
+            'refund_policy': extra.get('fees', {}).get('refund_policy') or 'As per institutional refund guidelines.'
+        },
+        'exams': {
+            'schedule': c_academic_calendar,
+            'policies': {
+                'attendance_requirement': 'Minimum 75% attendance is mandatory to appear for exams.',
+                'grading_system': 'Continuous Assessment (40%) + End Sem Exams (60%)',
+                'makeup_exams': 'Medical certificate or prior permission required.'
+            }
+        },
+        'syllabus': syllabus,
+        'placements': {
+            'highest_package': highest_pkg,
+            'average_package': avg_pkg,
+            'placement_rate': rate,
+            'top_recruiters': top_rec
+        },
+        'hostel': {
+            'details': hostel_details,
+            'fees': hostel_fees_val,
+            'facilities': hostel_facilities_list,
+            'names': hostel_names,
+            'warden_contact': hostel_warden
+        },
+        'campus_facilities': c_campus_facilities if c_campus_facilities else ['Information currently unavailable'],
+        'research_centers': c_research_centers if c_research_centers else ['Information currently unavailable'],
+        'announcements': [{'id': a.id, 'title': a.title, 'type': a.type, 'desc': a.desc} for a in announcements],
+        'events': events_list,
+        'news': [],
+        'faculty': [{'id': f.id, 'name': f.name, 'designation': f.designation, 'department': f.department, 'email': f.email} for f in faculty],
+        'faqs': [{'question': faq.question, 'answer': faq.answer} for faq in faqs],
+        'gallery': [{'id': g.id, 'image_url': g.image_url} for g in gallery],
+        'ranking': univ.ranking or 'Information currently unavailable',
+        'accreditation': univ.accreditation or 'Information currently unavailable',
+        'logo': univ.logo or 'fa-solid fa-graduation-cap',
+        'stats': stats,
+        'scholarships': [{'id': s.id, 'title': s.title, 'eligibility': s.eligibility, 'amount': s.amount} for s in scholarships],
+        'brochure_url': univ.brochure_url or '#',
+        'virtual_tour_url': univ.virtual_tour_url or '#',
+        'last_updated': univ.last_updated or '',
+        'source_attribution': c_source_attribution
+    }
+
 @app.route('/api/chat/stream', methods=['GET'])
 def chat_stream():
     """Stream chatbot responses in real-time using Server-Sent Events (SSE)."""
@@ -1044,29 +1254,7 @@ def chat_stream():
     univ = University.query.get(university_id)
     univ_name = univ.university_name if univ else university_id.upper()
     
-    univ_data = {}
-    try:
-        courses = Course.query.filter_by(university_id=university_id).all()
-        fees_courses = [{"course_name": c.name, "tuition_fee_per_year": c.fee} for c in courses]
-        faculty = Faculty.query.filter_by(university_id=university_id).all()
-        announcements = Announcement.query.filter_by(university_id=university_id).all()
-        placement = PlacementRecord.query.filter_by(university_id=university_id).first()
-        faqs = FAQItem.query.filter_by(university_id=university_id).all()
-        
-        univ_data = {
-            'university_name': univ_name,
-            'fees': {'courses': fees_courses},
-            'placements': {
-                'highest_package': placement.highest_package if placement else 'N/A',
-                'average_package': placement.average_package if placement else 'N/A',
-                'placement_rate': placement.placement_rate if placement else 'N/A'
-            },
-            'announcements': [{'title': a.title, 'desc': a.desc} for a in announcements],
-            'faculty': [{'name': f.name, 'designation': f.designation, 'department': f.department} for f in faculty],
-            'faqs': [{'question': faq.question, 'answer': faq.answer} for faq in faqs]
-        }
-    except Exception as e:
-        print(f"Error loading university details context: {e}")
+    univ_data = get_university_profile_dict(university_id) or {}
 
     # Fetch relevant document chunks using RAG vector database matching
     rag_chunks = []
@@ -1345,199 +1533,16 @@ def universities():
     if request.method == 'GET':
         univ_id = request.args.get('id')
         if univ_id:
-            univ = University.query.get(univ_id)
-            if not univ:
-                return jsonify({'error': 'University not found'}), 404
-            
             # Trigger background sync if not synced in last 1 hour
             now = time.time()
             if univ_id not in LAST_SYNCED or (now - LAST_SYNCED[univ_id]) > 3600:
                 LAST_SYNCED[univ_id] = now
                 import threading
                 threading.Thread(target=run_background_sync, args=(app, univ_id)).start()
-            
-            courses = Course.query.filter_by(university_id=univ_id).all()
-            faculty = Faculty.query.filter_by(university_id=univ_id).all()
-            announcements = Announcement.query.filter_by(university_id=univ_id).all()
-            gallery = GalleryItem.query.filter_by(university_id=univ_id).all()
-            placement = PlacementRecord.query.filter_by(university_id=univ_id).first()
-            faqs = FAQItem.query.filter_by(university_id=univ_id).all()
-            
-            fees_courses = []
-            for c in courses:
-                fees_courses.append({
-                    'id': c.id,
-                    'course_name': c.name,
-                    'duration': c.duration or '4 Years',
-                    'tuition_fee_per_year': c.fee
-                })
-            syllabus = {}
-            for c in courses:
-                if c.syllabus_json:
-                    try:
-                        syllabus[c.name] = json.loads(c.syllabus_json)
-                    except Exception:
-                        pass
-                        
-            top_rec = []
-            if placement and placement.top_recruiters_json:
-                try:
-                    top_rec = json.loads(placement.top_recruiters_json)
-                except Exception:
-                    pass
-                    
-            courses_count = Course.query.filter_by(university_id=univ_id).count()
-            faculty_count = Faculty.query.filter_by(university_id=univ_id).count()
-            departments_count = Department.query.filter_by(university_id=univ_id).count()
-            scholarships = Scholarship.query.filter_by(university_id=univ_id).all()
-            # Retrieve realistic stats from universe_data.json if present
-            real_students = 0
-            real_papers = 0
-            if os.path.exists(UNIVERSE_FILE):
-                try:
-                    with open(UNIVERSE_FILE, 'r', encoding='utf-8') as f:
-                        u_data = json.load(f)
-                        univ_stats = u_data.get(univ_id, {}).get('stats', {})
-                        real_students = univ_stats.get('total_students', {}).get('value', 0)
-                        real_papers = univ_stats.get('research_papers', {}).get('value', 0)
-                except Exception:
-                    pass
-            
-            if not real_students:
-                real_students = 8500 + (len(univ.university_name) * 123) % 15000
-            if not real_papers:
-                real_papers = 450 + (len(univ.university_name) * 47) % 1200
                 
-            highest_pkg = placement.highest_package if placement else "N/A"
-            avg_pkg = placement.average_package if placement else "N/A"
-            rate = placement.placement_rate if placement else "N/A"
-            
-            extra = {}
-            if univ.crawled_details_json:
-                try:
-                    extra = json.loads(univ.crawled_details_json)
-                except Exception:
-                    pass
-
-            c_students = real_students or extra.get('total_students')
-            c_faculty_count = extra.get('total_faculty') or faculty_count
-            c_departments_count = extra.get('departments_count') or departments_count
-            
-            c_admission_dates = extra.get('admission_dates') or 'Information currently unavailable'
-            c_application_deadlines = extra.get('application_deadlines') or 'Information currently unavailable'
-            c_hostel_fees = extra.get('hostel_fees') or 'Information currently unavailable'
-            c_hostel_facilities = extra.get('hostel_facilities') or []
-            c_campus_facilities = extra.get('campus_facilities') or []
-            c_research_centers = extra.get('research_centers') or []
-            c_academic_calendar = extra.get('academic_calendar') or 'Information currently unavailable'
-            c_source_attribution = extra.get('source_attribution') or 'Official University Website'
-            
-            stats = {
-                'total_students': {'value': c_students or 'Information currently unavailable', 'growth': '+4.8%', 'sparkline': [60, 65, 70, 75, 78, 80, 85]},
-                'courses': {'value': courses_count or 'Information currently unavailable', 'growth': '+2.5%', 'sparkline': [10, 11, 12, 12, 13, 14, 15]},
-                'faculty': {'value': c_faculty_count or 'Information currently unavailable', 'growth': '+3.1%', 'sparkline': [5, 6, 7, 7, 8, 9, 10]},
-                'departments': {'value': c_departments_count or 'Information currently unavailable', 'growth': '+0.5%', 'sparkline': [2, 3, 3, 3, 3, 3, 3]},
-                'placement_rate': {'value': rate if '%' in str(rate) else f"{rate}%" if rate != 'N/A' else 'Information currently unavailable', 'growth': '+1.2%', 'sparkline': [70, 72, 75, 78, 80, 82, 85]},
-                'average_package': {'value': avg_pkg, 'growth': '+5.8%', 'sparkline': [40, 42, 45, 48, 50, 52, 55]},
-                'highest_package': {'value': highest_pkg, 'growth': '+12.5%', 'sparkline': [20, 25, 28, 30, 32, 35, 37]},
-                'research_papers': {'value': real_papers or 'Information currently unavailable', 'growth': '+8.5%', 'sparkline': [80, 90, 100, 110, 115, 120, 125]}
-            }
-            
-            hostel_db = Hostel.query.filter_by(university_id=univ_id).first()
-            hostel_details = 'Information currently unavailable'
-            hostel_fees_val = 'Information currently unavailable'
-            hostel_facilities_list = ['Information currently unavailable']
-            hostel_names = 'Separate Boys & Girls Hostels'
-            hostel_warden = '9876543210'
-            
-            if hostel_db:
-                hostel_dict = hostel_db.to_dict()
-                hostel_details = hostel_db.details or 'AC and Non-AC premium hosteling options with 24/7 security, high-speed Wi-Fi, and modular laundry hubs.'
-                hostel_fees_val = hostel_db.fees or 'N/A'
-                hostel_facilities_list = hostel_dict.get('facilities') or ['24/7 High-speed Internet', 'Hygienic vegetarian mess', 'Common Gym', 'Power Backup']
-                hostel_names = hostel_db.names or 'Separate Boys & Girls Hostels'
-                hostel_warden = hostel_db.warden_contact or '9876543210'
-            elif c_hostel_fees:
-                hostel_details = 'AC and Non-AC hostel blocks with laundry services, study halls, and common dining halls.'
-                hostel_fees_val = c_hostel_fees
-                hostel_facilities_list = c_hostel_facilities if c_hostel_facilities else ['Wi-Fi', 'Common Mess']
-
-            events_db = Event.query.filter_by(university_id=univ_id).all()
-            events_list = []
-            if events_db:
-                events_list = [{'title': ev.title, 'date': ev.date or '', 'desc': ev.desc or ''} for ev in events_db]
-            else:
-                events_list = [
-                    {"title": "Annual Cultural Fest", "date": "March 15, 2026", "desc": "Inter-university talent show and cultural gala."},
-                    {"title": "TechExpo 2026", "date": "April 08, 2026", "desc": "Exhibition of top student projects and research papers."}
-                ]
-
-            resp_dict = {
-                'id': univ.id,
-                'university_name': univ.university_name,
-                'description': univ.description or 'Explore course syllabus, annual fee sheets, and campus life.',
-                'contact': {
-                    'email': univ.email or 'Information currently unavailable',
-                    'phone': univ.phone or 'Information currently unavailable',
-                    'address': univ.address or 'Information currently unavailable',
-                    'office_hours': univ.office_hours or 'Information currently unavailable',
-                    'website': univ.website or ''
-                },
-                'admissions': {
-                    'undergraduate': {
-                        'eligibility': 'Pass in Class 12 exams with minimum marks and entrance score.',
-                        'deadline': c_application_deadlines,
-                        'requirements': [
-                            'Online registration scorecard',
-                            'Class 10 and 12 mark sheets',
-                            'Transfer & Migration Certificate'
-                        ],
-                        'process': 'Register online, verify documents, lock choices, report to campus.'
-                    },
-                    'dates': c_admission_dates
-                },
-                'fees': {
-                    'courses': fees_courses,
-                    'payment_methods': ['Online NetBanking', 'Demand Draft'],
-                    'installment_plan': 'Payable in semester installments.',
-                    'refund_policy': 'As per institutional refund guidelines.'
-                },
-                'exams': {
-                    'schedule': c_academic_calendar,
-                    'policies': 'Minimum 75% attendance is mandatory to appear for exams.'
-                },
-                'syllabus': syllabus,
-                'placements': {
-                    'highest_package': highest_pkg,
-                    'average_package': avg_pkg,
-                    'placement_rate': rate,
-                    'top_recruiters': top_rec
-                },
-                'hostel': {
-                    'details': hostel_details,
-                    'fees': hostel_fees_val,
-                    'facilities': hostel_facilities_list,
-                    'names': hostel_names,
-                    'warden_contact': hostel_warden
-                },
-                'campus_facilities': c_campus_facilities if c_campus_facilities else ['Information currently unavailable'],
-                'research_centers': c_research_centers if c_research_centers else ['Information currently unavailable'],
-                'announcements': [{'id': a.id, 'title': a.title, 'type': a.type, 'desc': a.desc} for a in announcements],
-                'events': events_list,
-                'news': [],
-                'faculty': [{'id': f.id, 'name': f.name, 'designation': f.designation, 'department': f.department, 'email': f.email} for f in faculty],
-                'faqs': [{'question': faq.question, 'answer': faq.answer} for faq in faqs],
-                'gallery': [{'id': g.id, 'image_url': g.image_url} for g in gallery],
-                'ranking': univ.ranking or 'Information currently unavailable',
-                'accreditation': univ.accreditation or 'Information currently unavailable',
-                'logo': univ.logo or 'fa-solid fa-graduation-cap',
-                'stats': stats,
-                'scholarships': [{'id': s.id, 'title': s.title, 'eligibility': s.eligibility, 'amount': s.amount} for s in scholarships],
-                'brochure_url': univ.brochure_url or '#',
-                'virtual_tour_url': univ.virtual_tour_url or '#',
-                'last_updated': univ.last_updated or '',
-                'source_attribution': c_source_attribution
-            }
+            resp_dict = get_university_profile_dict(univ_id)
+            if not resp_dict:
+                return jsonify({'error': 'University not found'}), 404
             return jsonify(resp_dict)
             
         listings = []
@@ -3775,7 +3780,7 @@ def get_student_dashboard():
             saved_unis.append({
                 'id': univ.id,
                 'name': univ.university_name,
-                'location': univ.location,
+                'location': univ.address,
                 'ranking': univ.ranking,
                 'accreditation': univ.accreditation,
                 'logo': univ.logo

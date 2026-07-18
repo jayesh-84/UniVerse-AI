@@ -28,8 +28,10 @@ def scrape_university_details(university_id):
     html_content = ""
     site_alive = True
     try:
+        import ssl
+        context = ssl._create_unverified_context()
         req = urllib.request.Request(base_url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as response:
+        with urllib.request.urlopen(req, context=context, timeout=10) as response:
             html_content = response.read().decode('utf-8', errors='ignore')
     except Exception as e:
         print(f"Scraper network error fetching {base_url}: {e}")
@@ -375,7 +377,8 @@ def scrape_university_details(university_id):
         db.session.rollback()
         raise e
 
-    print(f"SUCCESS: Synchronized live crawled RAG chunks for {univ.university_name}!")
+    if not site_alive:
+        return True, "Website down. Serving last successfully verified data."
     return True, "Live synchronization completed successfully!"
 
 def SystemSetting_query():
