@@ -88,10 +88,6 @@ Please refer to the following documents for deployment instructions:
 2. **API Definition**: Check JSON payload structures and parameters in [docs/API_DOCUMENTATION.md](file:///C:/Users/SARVADNYA/Desktop/Universe%20AI/docs/API_DOCUMENTATION.md).
 3. **Environment Setup**: Copy `.env.example` to `.env` and fill out keys.
 
-<p align="center">
-<img src="banner.jpg" width="100%">
-</p>
-
 # 🎓 UniVerse AI
 
 An AI-powered Smart University Decision Platform that helps students explore universities, compare institutions, receive AI-powered career guidance, and manage their admission journey in one place.
