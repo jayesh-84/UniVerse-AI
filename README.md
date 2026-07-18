@@ -16,6 +16,17 @@
 
 </p>
 
+# 📚 Table of Contents
+
+- Features
+- Screenshots
+- Tech Stack
+- Project Structure
+- Installation
+- Usage
+- Future Enhancements
+- Developer
+
 A highly secure, customizable, and production-ready AI-powered Student Helpdesk Portal application. This system is designed to allow colleges, departments, or universities to immediately deploy an interactive assistant that answers common student inquiries (admission criteria, tuition fees, exam /hedules, and course syllabus) while supporting robust administrative CRUD dashboards.
 
 The backend is built on **Flask** and features a **Dual-Engine Response Pipeline**:
