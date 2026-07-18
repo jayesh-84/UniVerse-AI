@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="screenshots/banner.jpg" width="100%">
+</p>
+
 # 🎓 UniVerse AI
 
 An AI-powered Smart University Decision Platform that helps students explore universities, compare institutions, receive AI-powered career guidance, and manage their admission journey in one place.
