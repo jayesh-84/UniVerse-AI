@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="screenshots/banner.jpg" width="100%">
+</p>
+
 # UniVerse AI Student Helpdesk Portal
 
 A highly secure, customizable, and production-ready AI-powered Student Helpdesk Portal application. This system is designed to allow colleges, departments, or universities to immediately deploy an interactive assistant that answers common student inquiries (admission criteria, tuition fees, exam /hedules, and course syllabus) while supporting robust administrative CRUD dashboards.
