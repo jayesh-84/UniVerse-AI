@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="screenshots/banner.jpg" width="100%">
+  <img src="screenshots/banner.jpg" width="85%">
 </p>
 
 # UniVerse AI Student Helpdesk Portal
