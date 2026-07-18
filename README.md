@@ -43,42 +43,41 @@ The backend is built on **Flask** and features a **Dual-Engine Response Pipeline
 ```
 ## Screenshots
 
-### Home
+### 🏠 Home
 ![Home](screenshots/home.png)
 
-### Dashboard
+### 📊 Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
-### AI Chatbot
-![AI Chatbot](screenshots/ai-chatbot.png)
+### 🏫 University
+![University](screenshots/university.png)
 
-### University Information
-![University Information](screenshots/university.png)
-
-### University Comparison
-![University Comparison](screenshots/ai-comparison.png)
-
-### AI Career Roadmap
-![AI Career Roadmap](screenshots/ai-career-roadmap.png)
-
-### Scholarship Finder
+### 🎓 Scholarship Finder
 ![Scholarship Finder](screenshots/scholarship-finder.png)
 
-### AI Resume Builder
-![AI Resume Builder](screenshots/ai-resume-builder.png)
+### 🤖 AI Chatbot
+![AI Chatbot](screenshots/ai-chatbot.png)
 
-### AI Mock Interview
-![AI Mock Interview](screenshots/ai-mock-interview.png)
+### ⚖️ AI Comparison
+![AI Comparison](screenshots/ai-comparison.png)
 
-### Application Tracker
+### 🗺️ Career Roadmap
+![Career Roadmap](screenshots/ai-career-roadmap.png)
+
+### 📄 Resume Builder
+![Resume Builder](screenshots/ai-resume-builder.png)
+
+### 🎤 Mock Interview
+![Mock Interview](screenshots/ai-mock-interview.png)
+
+### 📌 Application Tracker
 ![Application Tracker](screenshots/application-tracker.png)
 
-### Notification Center
-![Notification Center](screenshots/notifications.png)
+### 🔔 Notifications
+![Notifications](screenshots/notifications.png)
 
-### User Profile
-![User Profile](screenshots/profile.png)
-
+### 👤 Profile
+![Profile](screenshots/profile.png)
 
 ---
 
